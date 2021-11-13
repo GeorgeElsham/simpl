@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { logger } = require('../functions/logger')
+const { logger } = require('../helpers/logger')
 
 const {
     NODE_ENV,

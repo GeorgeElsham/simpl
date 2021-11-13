@@ -10,7 +10,7 @@ const server = app.listen(port, () => {
 
 process.on('unhandledRejection', (error) => {
 	logger.info(' Unhandled Rejection => shutting down..... ');
-	logger.info(error.name, error.message);
+	console.error(error);
 	server.close(() => {
 		process.exit(1);
 	});
@@ -18,6 +18,6 @@ process.on('unhandledRejection', (error) => {
 
 process.on('uncaughtException', (error) => {
 	logger.info(' uncaught Exception => shutting down..... ');
-	logger.info(error.name, error.message);
+	console.error(error);
 	process.exit(1);
 });
