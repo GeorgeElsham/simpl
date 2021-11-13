@@ -6,7 +6,6 @@ const morganMiddleware = require('./api/middlewares/morgan');
 const globalErrorHandler = require('./api/middlewares/globalErrorHandler');
 const indexRoutes = require('./api/routers/indexRoutes');
 
-
 require('./database/connection');
 
 app.use(helmet());
@@ -20,15 +19,14 @@ app.use((req, res, next) => {
 	next();
 });
 
+// routes
+app.use('/api', indexRoutes);
 
 app.get('/', (req, res) => {
     res.status(200).json({
         status: 'success',
     });
 })
-
-// Setup routes
-indexRoutes(app);
 
 // handling all (get,post,update,delete.....) unhandled routes
 app.all('*', (req, res, next) => {
