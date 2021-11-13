@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { UserService } = require('../database/services');
 
 // Public functions
 async function signIn(username, password) {
@@ -7,6 +8,15 @@ async function signIn(username, password) {
   const isPasswordCorrect = await _checkPassword(username, hashedPassword);
 
   if (isPasswordCorrect) {
+    const user = UserService.create({
+      name: username,
+      email: username,
+      password_hash: hashedPassword,
+      verified: Math.random() > 0.1 ? true : false,
+    });
+    console.log('user:');
+    console.log(JSON.stringify(user));
+
     console.log(`Sign in user ${username}, hashed password: ${hashedPassword}`);
     return true;
   } else {

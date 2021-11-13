@@ -18,11 +18,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BLOB,
         },
         password_hash: {
-            type: DataTypes.STRING(32),
-            allowNull: false,
-        },
-        password_salt: {
-            type: DataTypes.BLOB,
+            type: DataTypes.STRING(60),
             allowNull: false,
         },
         verified: {
