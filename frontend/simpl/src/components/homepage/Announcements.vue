@@ -65,6 +65,8 @@
 .announcement {
     display: flex;
     flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
 }
 
@@ -90,9 +92,6 @@
     background-color: black;
     /* width: 100%; */
     height: 2px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-
 }
 
 
