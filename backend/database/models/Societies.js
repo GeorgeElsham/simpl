@@ -6,14 +6,10 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
         },
         name: {
-            type: DataTypes.VARCHAR(256),
-            defaultValue: 'Unnamed',
-            allowNull: false,
+            type: DataTypes.STRING(256),
         },
         description: {
             type: DataTypes.TEXT,
-            defaultValue: 'Empty',
-            allowNull: false,
         },
         profile_picture: {
             type: DataTypes.BLOB,
