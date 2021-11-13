@@ -1,7 +1,9 @@
 const { logger } = require('./helpers/logger');
 const app = require('./app');
 const { PORT } = require('./config');
-const port = PORT || 7000;
+
+// server
+const port = PORT || 5000;
 const server = app.listen(port, () => {
 	logger.info(`App is running on http://localhost:${port}`);
 });
