@@ -4,6 +4,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morganMiddleware = require('./api/middlewares/morgan');
 const globalErrorHandler = require('./api/middlewares/globalErrorHandler');
+const indexRoutes = require('./api/routers/indexRoutes');
 
 
 require('./database/connection');
@@ -25,6 +26,9 @@ app.get('/', (req, res) => {
         status: 'success',
     });
 })
+
+// Setup routes
+indexRoutes(app);
 
 // handling all (get,post,update,delete.....) unhandled routes
 app.all('*', (req, res, next) => {
