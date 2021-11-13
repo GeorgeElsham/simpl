@@ -2,8 +2,8 @@
   <div id="center">
     <h1 id="title">simpl.io</h1>
     <div class="container-form">
-      <input class="field" type="email" placeholder="email" ref="emailInput" /><br />
-      <input class="field" type="password" placeholder="password" ref="passwordInput" />
+      <input class="field" type="email" placeholder="email" v-model="emailInput" /><br />
+      <input class="field" type="password" placeholder="password" v-model="passwordInput" />
       <div class="container">
         <input v-on:click="login()" id="login" type="submit" value="Login" />
         <input id="signup" type="submit" value="SignUp" />
@@ -22,10 +22,10 @@ export default {
       const passwordInput = ref(null)
 
       const login = () => {
-        let email = emailInput.value.value
-        let password = passwordInput.value.value
+        let email = emailInput.value;
+        let password = passwordInput.value;
 
-        if (email !== null && password !== null && email != "" && password != password) {
+        if (email !== null && password !== null && email != "") {
           //axios.post()
           console.log(email, password)
         }
