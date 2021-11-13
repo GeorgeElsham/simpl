@@ -1,19 +1,43 @@
 <template>
   <div id="center">
     <h1 id="title">simpl.io</h1>
-    <form class="container">
-      <input class="field" type="email" placeholder="email" /><br />
-      <input class="field" type="password" placeholder="password" />
+    <div class="container-form">
+      <input class="field" type="email" placeholder="email" v-model="emailInput" /><br />
+      <input class="field" type="password" placeholder="password" v-model="passwordInput" />
       <div class="container">
-        <input id="login" type="submit" value="Login" />
+        <input v-on:click="login()" id="login" type="submit" value="Login" />
         <input id="signup" type="submit" value="SignUp" />
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+
+import { setup, ref } from "vue"
+
+export default {
+    setup() {
+      const emailInput = ref(null)
+      const passwordInput = ref(null)
+
+      const login = () => {
+        let email = emailInput.value;
+        let password = passwordInput.value;
+
+        if (email !== null && password !== null && email != "") {
+          //axios.post()
+          console.log(email, password)
+        }
+      }
+
+      return {
+        emailInput,
+        passwordInput,
+        login
+      }
+    }
+}
 </script>
 
 
@@ -44,7 +68,7 @@ input.field {
   caret-color: #ffffff;
 }
 
-form.container {
+.container-form {
   display: flex;
   flex-direction: column;
   gap: 0.01rem;
