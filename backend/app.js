@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const morgan = require('morgan');
-const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 
@@ -17,12 +16,6 @@ if (NODE_ENV === 'development') {
 // CORS
 app.use(cors());
 
-//  set limit request from same API in timePeroid from same ip
-const limiter = rateLimit({
-	max: 200, //   max number of limits
-	windowMs: 60 * 1000, // Minute
-	message: 'too many req from this IP, try again in a minute',
-});
 //  Body Parser  => reading data from body into req.body protect from scraping etc
 app.use(express.json());
 app.get('/', (req, res) => {
