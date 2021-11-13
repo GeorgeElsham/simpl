@@ -1,1 +1,0 @@
-# SiMPL Society Management Platform
