@@ -3,21 +3,26 @@ const app = express();
 const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
+
+
+
 const { NODE_ENV } = require('./config');
 
-app.use(express.json());
-
 app.use(helmet());
+app.use(cors());
+app.use(express.json());
 
 if (NODE_ENV === 'development') {
 	app.use(morgan('dev'));
 }
 
-// CORS
-app.use(cors());
+// testing middleware
+app.use((req, res, next) => {
+	// Auth stuff?
+	next();
+});
 
-//  Body Parser  => reading data from body into req.body protect from scraping etc
-app.use(express.json());
+
 app.get('/', (req, res) => {
     res.status(200).json({
         status: 'success',
