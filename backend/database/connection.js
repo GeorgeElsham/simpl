@@ -34,6 +34,8 @@ Societies.belongsToMany(Users, { through: UserSociety, as: 'User' });
 
 module.exports = { Announcements, Events, Societies, Users };
 
+const { seed } = require('./seeders/seed');
+
 (async () => {
     if (NODE_ENV == 'development') {
         const force = process.argv.includes('--forcesync');
@@ -42,7 +44,7 @@ module.exports = { Announcements, Events, Societies, Users };
             await sequelize.sync({ force: force });
             if (force) {
                 logger.alert('All models force synced');
-                // seed();
+                seed();
                 logger.alert('Seeded new random data');
             }
             else {
