@@ -1,1 +1,1 @@
-# SiMPL Society platform management system
+# SiMPL Society Management Platform
