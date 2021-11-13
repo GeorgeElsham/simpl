@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         password_salt: {
-            type: DataTypes.STRING(16),
+            type: DataTypes.BLOB,
             allowNull: false,
         },
         verified: {

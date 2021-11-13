@@ -19,8 +19,6 @@ exports.getById = (uuids) => {
 }
 
 exports.create = (data) => {
-    console.log('ksjdhfkjsdhf');
-    console.log(Users);
     return Users.create({
         id: uuidv4(),
         name: data.name,
