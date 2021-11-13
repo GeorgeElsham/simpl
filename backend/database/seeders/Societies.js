@@ -1,6 +1,7 @@
-const { AnnouncementService } = require('../services');
+const { SocietyService } = require('../services');
 
 const SocietySeed = () => {
+    SocietyService.create({ data: 'data' });
 }
 
 module.exports = { SocietySeed }
