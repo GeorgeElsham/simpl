@@ -2,10 +2,10 @@
   "name": "simpl",
   "version": "0.0.0",
   "description": "Soceity Management Platform",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js --debug"
+    "start": "node server.js",
+    "dev": "nodemon server.js --debug"
   },
   "repository": {
     "type": "git",
