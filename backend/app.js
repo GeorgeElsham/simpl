@@ -5,6 +5,9 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 
 
+const globalErrorHandler = require('./api/middlewares/globalErrorHandler');
+
+require('./database/connection');
 
 const { NODE_ENV } = require('./config');
 
