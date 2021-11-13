@@ -17,6 +17,8 @@
         </div>
 
         <Announcements />
+        
+        <Events />
 
     </div>
 </template>
@@ -73,7 +75,7 @@ export default {
     props: [],
 
     components: {
-        Announcements
+        Announcements,
     },
     
     setup(props) {
