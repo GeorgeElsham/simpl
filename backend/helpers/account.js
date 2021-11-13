@@ -8,7 +8,7 @@ async function signIn(username, password) {
   const isPasswordCorrect = await _checkPassword(username, hashedPassword);
 
   if (isPasswordCorrect) {
-    const user = UserService.create({
+    const user = await UserService.create({
       name: username,
       email: username,
       password_hash: hashedPassword,
