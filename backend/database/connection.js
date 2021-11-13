@@ -18,8 +18,8 @@ UserEvent = sequelize.define('user_event', {}, {
     underscored: true,
 });
 
-Users.belongsToMany(Events, { through: UserEvent, as: 'Event' });
-Events.belongsToMany(Users, { through: UserEvent, as: 'User' });
+Users.belongsToMany(Events, { through: UserEvent });
+Events.belongsToMany(Users, { through: UserEvent });
 
 // User society join table
 UserSociety = sequelize.define('user_society', {
@@ -29,8 +29,8 @@ UserSociety = sequelize.define('user_society', {
     underscored: true,
 });
 
-Users.belongsToMany(Societies, { through: UserSociety, as: 'Society' });
-Societies.belongsToMany(Users, { through: UserSociety, as: 'User' });
+Users.belongsToMany(Societies, { through: UserSociety });
+Societies.belongsToMany(Users, { through: UserSociety });
 
 module.exports = { Announcements, Events, Societies, Users };
 
