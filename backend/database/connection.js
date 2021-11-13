@@ -1,6 +1,9 @@
 const Sequelize = require('sequelize');
 const { NODE_ENV } = require('../config');
 const { logger } = require('../helpers/logger');
+
+const { seed } = require('./seeders/seed');
+
 const sequelizeConnection = require('./dbconfig');
 
 const sequelize = new Sequelize(sequelizeConnection);
@@ -20,7 +23,13 @@ if (NODE_ENV == 'development') {
     const sync = process.argv.includes('--sync');
     if (sync) {
         sequelize.sync({ force: force });
-        if (force) logger.alert('All models force synced');
-        else logger.alert('All models synced');
+        if (force) {
+            logger.alert('All models force synced');
+            seed();
+            logger.alert('Seeded new random data');
+        }
+        else {
+            logger.alert('All models synced');
+        }
     }
 }
