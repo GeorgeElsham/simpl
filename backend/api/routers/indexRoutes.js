@@ -1,7 +1,13 @@
+const express = require('express')
+const router = express.Router()
+
+
 const auth = require('./auth');
+const users = require('./users')
 
-function indexRoutes(app) {
-  app.use('/auth', auth);
-}
 
-module.exports = indexRoutes;
+router.use('/auth', auth);
+router.use('/users', users)
+
+
+module.exports = router;
