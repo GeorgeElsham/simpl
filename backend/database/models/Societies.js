@@ -26,5 +26,10 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: 0,
             allowNull: false,
         },
+    }, { 
+        freezeTableName: true,
+        timestamps: true,
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
     });
 };

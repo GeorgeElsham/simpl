@@ -18,6 +18,13 @@ exports.seed = async () => {
         societies.push(await SocietySeed(users));
     }
 
-    // AnnouncementSeed();
-    // EventSeed();
+    for (let i = 0; i < 10; i++) {
+        societies.push(await EventSeed());
+    }
+
+    for (let i = 0; i < 10; i++) {
+        societies.push(await AnnouncementSeed());
+    }
+    
+    
 }
