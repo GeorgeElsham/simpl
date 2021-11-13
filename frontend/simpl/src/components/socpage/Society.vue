@@ -1,6 +1,8 @@
 <template>
+<div>
   <navbar :society="soc" />
-  <announcements :soceity="soc" />
+  <announcements :soc="soc" />
+</div>
 </template>
 
 <script>
