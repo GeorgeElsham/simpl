@@ -4,7 +4,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morganMiddleware = require('./api/middlewares/morgan');
 const globalErrorHandler = require('./api/middlewares/globalErrorHandler');
-const indexRoutes = require('./api/routers/indexRoutes');
+const indexRoutes = require('./api/routers');
 
 require('./database/connection');
 
