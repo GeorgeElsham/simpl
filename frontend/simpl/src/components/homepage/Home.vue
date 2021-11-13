@@ -70,12 +70,14 @@
 import { setup } from 'vue'
 
 import Announcements from "./Announcements.vue"
+import Events from "./Events.vue"
 
 export default {
     props: [],
 
     components: {
         Announcements,
+        Events
     },
     
     setup(props) {
