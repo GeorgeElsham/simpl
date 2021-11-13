@@ -2,42 +2,52 @@
   <div id="center">
     <h1 id="title">simpl.io</h1>
     <div class="container-form">
-      <input class="field" type="email" placeholder="email" v-model="emailInput" /><br />
-      <input class="field" type="password" placeholder="password" v-model="passwordInput" />
+      <input class="field" type="name" placeholder="name" v-model="name" />
+      <input class="field" type="email" placeholder="email" v-model="email" />
+      <input
+        class="field"
+        type="password"
+        placeholder="password"
+        v-model="password"
+      />
+      <input
+        class="field"
+        type="password"
+        placeholder="repeat password"
+        v-model="repeatedPassword"
+      />
       <div class="container">
-        <input v-on:click="login()" id="login" type="submit" value="Login" />
-        <input id="signup" type="submit" value="SignUp" />
+        <input v-on:click="signup()" id="signup" type="submit" value="SignUp" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
-import { setup, ref } from "vue"
+import { ref, setup } from "vue";
 
 export default {
-    setup() {
-      const emailInput = ref(null)
-      const passwordInput = ref(null)
+  setup() {
+    const name = ref(null);
+    const email = ref(null);
+    const password = ref(null);
+    const repeatedPassword = ref(null);
 
-      const login = () => {
-        let email = emailInput.value;
-        let password = passwordInput.value;
-
-        if (email !== null && password !== null && email != "") {
-          //axios.post()
-          console.log(email, password)
-        }
+    const signup = () => {
+      if (password.value !== repeatedPassword.value) {
+        alert('passwords are not the same')
       }
+    };
 
-      return {
-        emailInput,
-        passwordInput,
-        login
-      }
-    }
-}
+    return {
+      name,
+      email,
+      password,
+      repeatedPassword,
+      signup
+    };
+  },
+};
 </script>
 
 
@@ -71,7 +81,7 @@ input.field {
 .container-form {
   display: flex;
   flex-direction: column;
-  gap: 0.01rem;
+  gap: 1rem;
   width: 20vw;
 }
 
@@ -115,7 +125,7 @@ div.container {
 }
 
 #signup:hover {
-  background: #CFD8DC;
+  background: #cfd8dc;
   color: #283593;
   cursor: pointer;
 }
