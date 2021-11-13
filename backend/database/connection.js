@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const { NODE_ENV } = require('../config');
-const { logger } = require('../functions/logger');
+const { logger } = require('../helpers/logger');
 const sequelizeConnection = require('./dbconfig');
 
 const sequelize = new Sequelize(sequelizeConnection);
