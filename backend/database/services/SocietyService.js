@@ -1,8 +1,25 @@
 const { v4 } = require('uuid');
 const { Societies } = require('../connection')
 
-exports.get = (uuid) => {
-    return Societies.findOne(uuid);
+exports.getById = (uuids) => {
+    if (uuids.length === 1) {
+        return Societies.findOne({
+            where: {
+                id: uuids[0]
+            },
+        });
+    }
+    else {
+        return Societies.findAll({
+            where: {
+                id: uuids
+            },
+        });
+    }
+}
+
+exports.getAll = () => {
+    return Societies.findAll();
 }
 
 exports.create = (data) => {

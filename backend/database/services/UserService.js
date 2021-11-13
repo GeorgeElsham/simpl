@@ -1,19 +1,40 @@
-const { Users } = require('../connection');
+const { Users, Societies } = require('../connection');
 const { v4 } = require('uuid');
 
 exports.getById = (uuids) => {
-    if (uuids.length === 0) {
+    if (uuids.length === 1) {
         return Users.findOne({
             where: {
                 id: uuids[0]
-            }
+            },
+            include: Societies,
         });
     }
     else {
         return Users.findAll({
             where: {
                 id: uuids
-            }
+            },
+            include: Societies,
+        });
+    }
+}
+
+exports.getByEmail = (emails) => {
+    if (emails.length === 1) {
+        return Users.findOne({
+            where: {
+                email: emails[0]
+            },
+            include: Societies,
+        });
+    }
+    else {
+        return Users.findAll({
+            where: {
+                email: emails
+            },
+            include: Societies,
         });
     }
 }
