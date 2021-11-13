@@ -1,8 +1,16 @@
 const { Users } = require('../connection');
 const { v4 } = require('uuid');
 
+exports.getByEmail = (email) => {
+    return Users.findOne({
+        where: {
+            email,
+        }
+    });
+}
+
 exports.getById = (uuids) => {
-    if (uuids.length === 0) {
+    if (uuids.length === 1) {
         return Users.findOne({
             where: {
                 id: uuids[0]
