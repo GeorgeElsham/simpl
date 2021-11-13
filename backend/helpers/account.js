@@ -2,22 +2,26 @@ const bcrypt = require('bcrypt');
 const { UserService } = require('../database/services');
 
 // Public functions
-async function signIn(username, password) {
+async function signIn(email, password) {
+  //
+}
+
+async function signUp(name, email, password) {
   const salt = await _generateSalt();
   const hashedPassword = await _hashPassword(password, salt);
   const isPasswordCorrect = await _checkPassword(username, hashedPassword);
 
   if (isPasswordCorrect) {
     const user = await UserService.create({
-      name: username,
-      email: username,
+      name,
+      email,
       password_hash: hashedPassword,
       verified: Math.random() > 0.1 ? true : false,
     });
     console.log('user:');
     console.log(JSON.stringify(user));
 
-    console.log(`Sign in user ${username}, hashed password: ${hashedPassword}`);
+    console.log(`Sign in user ${email}, hashed password: ${hashedPassword}`);
     return true;
   } else {
     console.log('Invalid credentials');
@@ -27,8 +31,8 @@ async function signIn(username, password) {
 
 
 // Internal functions
-function _checkPassword(username, password) {
-  const realPassword = 'password123'; // get depending on username
+function _checkPassword(email, password) {
+  const realPassword = 'password123'; // get depending on email
 
   return new Promise((resolve, reject) => {
     bcrypt.compare(realPassword, password, (err, result) => {
@@ -69,4 +73,5 @@ function _hashPassword(password, salt) {
 // Exports
 module.exports = {
   signIn,
+  signUp,
 };
