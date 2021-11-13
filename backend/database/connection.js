@@ -13,6 +13,15 @@ const Societies = require('./models/Societies')(sequelize, Sequelize.DataTypes);
 const User_society = require('./models/User_society')(sequelize, Sequelize.DataTypes);
 const Users = require('./models/Users')(sequelize, Sequelize.DataTypes);
 
+User_society.hasMany(Users, {
+    foreignKey: 'id', 
+    sourceKey: 'user_id'
+});
+Users.belongsTo(User_society, {
+    foreignKey: 'id', 
+    targetKey: 'user_id'
+});
+
 
 module.exports = { Announcements, Events, Societies, User_society, Users };
 
@@ -26,7 +35,7 @@ const { seed } = require('./seeders/seed');
             await sequelize.sync({ force: force });
             if (force) {
                 logger.alert('All models force synced');
-                seed();
+                // seed();
                 logger.alert('Seeded new random data');
             }
             else {
