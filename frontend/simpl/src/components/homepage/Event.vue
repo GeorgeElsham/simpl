@@ -1,14 +1,19 @@
 <template>
     <div class="event">
-        <div class="event-header">
-            <div class="event-title">{{ event.name }}</div>
-            <div class="event-date">{{ event.date }}</div>
+        <div class="content-wrapper">
+            <div class="event-header">
+                <div class="event-title">{{ event.name }}</div>
+                <div class="event-date">{{ event.date }}</div>
+            </div>
+
+            <div class="event-body">
+                <div class="event-text">{{ event.body }}</div>
+            </div>
         </div>
 
-        <div class="event-body">
-            <div class="event-text">{{ event.body }}</div>
-            <div class="event-button">Sign up</div>
-        </div>
+        <div class="event-button">Sign up</div>
+
+
 
     </div>
 </template>
@@ -16,10 +21,18 @@
 <style scoped>
 
 .event {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    box-shadow: rgb(50 50 93 / 16%) 0px 3px 22px 5px;
     padding: 30px;
     border-radius: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.content-wrapper {
+    flex: 4;
+
 }
 
 .event-body {
@@ -33,8 +46,8 @@
 .event-text {
     /* text-align: left; */
     text-align: justify;
-    flex: 4;
-    margin-right: 40px;
+    margin-right: 70px;
+    padding-right: 20px;
 }
 
 .event-button {
@@ -48,6 +61,7 @@
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
+    max-width: 150px;
 }
 
 .event-header {

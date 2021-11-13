@@ -25,7 +25,7 @@
     padding: 15px;
     border-radius: 10px;
     margin-left: 20px;
-    width: 300px;
+    min-width: 350px;
 
 }
 

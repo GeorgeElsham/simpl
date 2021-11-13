@@ -1,5 +1,5 @@
 <template>
-    <div id="component">
+    <div id="home">
 
         <div id="menu">
             <div id="menu-left" class="menu-buttons">
@@ -25,11 +25,12 @@
 
 <style>
 
-#component {
+#home {
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 60vw;
     grid-template-rows: 50px minmax(0, 1fr) minmax(0, 2fr);
+    background-color: white;
 }
 
 #menu {
@@ -62,6 +63,25 @@
     color: white;
     font-weight: bold;
     border-radius: 10px;
+}
+
+#title {
+    font-size: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#title p {
+    font-weight: bold;
+}
+
+.title-line {
+    margin-top: 5px;
+    height: 2px;
+    width: 300px;
+    background-color: black;
 }
 
 </style>

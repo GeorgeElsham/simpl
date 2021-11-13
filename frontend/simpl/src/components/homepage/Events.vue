@@ -2,7 +2,7 @@
     <div id="events">
         <div id="title">
             <p>Events</p>
-            <hr class="title-line">
+            <div class="title-line"></div>
         </div>
 
         <fieldset id="switch">
@@ -24,21 +24,6 @@
 </template>
 
 <style scoped>
-
-#title {
-    font-size: 25px;
-    text-align: left;
-
-}
-
-#title p {
-    margin-left: 20px;
-}
-
-#title-line {
-    height: 2px;
-    color: black;
-}
 
 #list {
     display: flex;

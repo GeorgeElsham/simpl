@@ -2,7 +2,7 @@
     <div id="announcements">
         <div id="title">
             <p>Announcements</p>
-            <hr class="title-line">
+            <div class="title-line"></div>
         </div>
         <div id="carousel">
             <announcement-block v-for="(block, i) in announcementBlocks" :block="block" :key="i"  />
@@ -12,19 +12,10 @@
 
 <style scoped>
 
-#title {
-    font-size: 25px;
-    text-align: left;
-
-}
-
-#title p {
-    margin-left: 20px;
-}
-
-#title-line {
-    height: 2px;
-    color: black;
+#announcements {
+    /* margin-top: 50px;
+     */
+     align-self: center;
 }
 
 #carousel {
@@ -33,6 +24,11 @@
     padding-left: 100px;
     padding-right: 100px;
     margin-top: 20px;    
+    overflow-x: scroll;
+}
+
+#carousel::-webkit-scrollbar {
+    display: none;
 }
 
 
@@ -113,6 +109,24 @@ export default {
                     {
                         date: "32/12",
                         name: "Nothing"
+                    },
+                ]
+            },
+            {
+                societyName: "T&I",
+                background: "linear-gradient(45deg, #0f0c29, #302b63, #24243e)",
+                announcements: [
+                    {
+                        date: "09/09",
+                        name: "Bloomber Terminal introduction"
+                    },
+                    {
+                        date: "07/04",
+                        name: "Bloomberg interview"
+                    },
+                    {
+                        date: "02/02",
+                        name: "Pub quiz"
                     },
                 ]
             },
