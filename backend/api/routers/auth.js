@@ -8,10 +8,10 @@ router.get('/', (req, res) => {
 });
 
 router.post('/sign-in', async (req, res) => {
-  const { username, password } = req.query;
-  console.log(username, password);
+  const { email, password } = req.query;
+  console.log(email, password);
 
-  await account.signIn(username, password);
+  await account.signIn(email, password);
 
   res.send('Test message on /sign-in');
 });
