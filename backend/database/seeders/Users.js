@@ -3,7 +3,7 @@ const faker = require('faker');
 const crypto = require('crypto');
 
 const UserSeed = () => {
-    return UserService.create({ 
+    return UserService.create({
         name: faker.name.findName(),
         email: faker.internet.email(),
         profile_picture: null,
