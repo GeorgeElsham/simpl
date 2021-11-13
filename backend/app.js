@@ -1,23 +1,17 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const morgan = require('morgan');
 const helmet = require('helmet');
-
-
+const morganMiddleware = require('./api/middlewares/morgan');
 const globalErrorHandler = require('./api/middlewares/globalErrorHandler');
 
-require('./database/connection');
 
-const { NODE_ENV } = require('./config');
+require('./database/connection');
 
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
-
-if (NODE_ENV === 'development') {
-	app.use(morgan('dev'));
-}
+app.use(morganMiddleware)
 
 // testing middleware
 app.use((req, res, next) => {
