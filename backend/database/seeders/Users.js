@@ -8,7 +8,6 @@ const UserSeed = () => {
         email: faker.internet.email(),
         profile_picture: null,
         password_hash: faker.internet.password(),
-        password_salt: crypto.randomBytes(32).toString(),
         verified: Math.random() > 0.1 ? true : false,
     });
 }

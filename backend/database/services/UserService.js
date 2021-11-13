@@ -25,7 +25,6 @@ exports.create = (data) => {
         email: data.email,
         profile_picture: data.profile_picture,
         password_hash: data.password_hash,
-        password_salt: data.password_salt,
         verified: data.verified,
     });
 }
