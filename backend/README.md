@@ -4,7 +4,11 @@ TODO Description
 
 ## How to use
 
-1.  Run `npm start`
+1.  Run `npm start` - In production
+
+2.  Run `npm run dev` - In development ( nodemon )
+
+3.  Run `npm run dev:sync` - In development ( resets database )
 
 ## Flags
 
