@@ -1,4 +1,4 @@
-const { AnnouncementSeed } = require('./Annoucements');
+const { AnnouncementSeed } = require('./Announcements');
 
 
 exports.seed = () => {
