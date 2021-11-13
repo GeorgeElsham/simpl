@@ -8,8 +8,13 @@ const { UserSeed } = require('./Users');
 
 exports.seed = () => {
     logger.info('Seeding database...');
+    const users = [];
+    for (let i = 0; i < 10; i++) {
+        users.push(await UserSeed());
+    }
+
+    SocietySeed(users);
+
     AnnouncementSeed();
     EventSeed();
-    SocietySeed();
-    UserSeed();
 }
