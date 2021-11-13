@@ -3,6 +3,7 @@ const { NODE_ENV } = require('../config');
 const { logger } = require('../helpers/logger');
 
 const sequelizeConnection = require('./dbconfig');
+const { roles } = require('./models/enums');
 
 const sequelize = new Sequelize(sequelizeConnection);
 
@@ -23,7 +24,7 @@ Events.belongsToMany(Users, { through: UserEvent });
 
 // User society join table
 UserSociety = sequelize.define('user_society', {
-    role: Sequelize.STRING,
+    role: Sequelize.ENUM(roles),
 }, {
     freezeTableName: true,
     underscored: true,

@@ -1,6 +1,5 @@
 const { UserService } = require('../services');
 const faker = require('faker');
-const crypto = require('crypto');
 
 const UserSeed = () => {
     return UserService.create({
