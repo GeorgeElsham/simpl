@@ -8,8 +8,10 @@ async function signIn(username, password) {
 
   if (isPasswordCorrect) {
     console.log(`Sign in user ${username}, hashed password: ${hashedPassword}`);
+    return true;
   } else {
     console.log('Invalid credentials');
+    return false;
   }
 }
 
