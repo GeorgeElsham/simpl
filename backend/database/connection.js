@@ -10,22 +10,29 @@ const sequelize = new Sequelize(sequelizeConnection);
 const Announcements = require('./models/Announcements')(sequelize, Sequelize.DataTypes);
 const Events = require('./models/Events')(sequelize, Sequelize.DataTypes);
 const Societies = require('./models/Societies')(sequelize, Sequelize.DataTypes);
-const User_society = require('./models/User_society')(sequelize, Sequelize.DataTypes);
 const Users = require('./models/Users')(sequelize, Sequelize.DataTypes);
 
-User_society.hasMany(Users, {
-    foreignKey: 'id', 
-    sourceKey: 'user_id'
-});
-Users.belongsTo(User_society, {
-    foreignKey: 'id', 
-    targetKey: 'user_id'
+// User event join table
+UserEvent = sequelize.define('user_event', {}, {
+    freezeTableName: true,
+    underscored: true,
 });
 
+Users.belongsToMany(Events, { through: UserEvent, as: 'Event' });
+Events.belongsToMany(Users, { through: UserEvent, as: 'User' });
 
-module.exports = { Announcements, Events, Societies, User_society, Users };
+// User society join table
+UserSociety = sequelize.define('user_society', {
+    role: Sequelize.STRING,
+}, {
+    freezeTableName: true,
+    underscored: true,
+});
 
-const { seed } = require('./seeders/seed');
+Users.belongsToMany(Societies, { through: UserSociety, as: 'Society' });
+Societies.belongsToMany(Users, { through: UserSociety, as: 'User' });
+
+module.exports = { Announcements, Events, Societies, Users };
 
 (async () => {
     if (NODE_ENV == 'development') {
