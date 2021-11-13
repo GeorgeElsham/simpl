@@ -6,7 +6,11 @@ const sequelizeConnection = require('./dbconfig');
 const sequelize = new Sequelize(sequelizeConnection);
 
 
-const society = require('./models/society')(sequelize, Sequelize.DataTypes);
+const Announcements = require('./models/Annoucements')(sequelize, Sequelize.DataTypes);
+const Events = require('./models/Events')(sequelize, Sequelize.DataTypes);
+const Societies = require('./models/Societies')(sequelize, Sequelize.DataTypes);
+const User_society = require('./models/User_society')(sequelize, Sequelize.DataTypes);
+const Users = require('./models/Users')(sequelize, Sequelize.DataTypes);
 
 
 module.exports = { society };
