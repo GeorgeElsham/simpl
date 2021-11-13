@@ -1,5 +1,5 @@
 const { Users } = require('../connection');
-const { v4: uuidv4 } = require('uuid');
+const { v4 } = require('uuid');
 
 exports.getById = (uuids) => {
     if (uuids.length === 0) {
@@ -20,7 +20,7 @@ exports.getById = (uuids) => {
 
 exports.create = (data) => {
     return Users.create({
-        id: uuidv4(),
+        id: v4(),
         name: data.name,
         email: data.email,
         profile_picture: data.profile_picture,
