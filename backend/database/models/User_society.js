@@ -1,3 +1,5 @@
+const { roles } = require("./enums");
+
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('user_society', {
         user_id: {
@@ -9,11 +11,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         role: {
-            type: DataTypes.ENUM(
-                "member",
-                "admin",
-                "owner"
-            ),
+            type: DataTypes.ENUM(roles),
             defaultValue: 'member',
             allowNull: false,
         },

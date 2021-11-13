@@ -1,3 +1,5 @@
+const { society_categories } = require("./enums");
+
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('societies', {
         id: {
@@ -15,16 +17,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BLOB,
         },
         category: {
-            type: DataTypes.ENUM(
-                "sports",
-                "academic",
-                "misc"
-            ),
+            type: DataTypes.ENUM(society_categories),
             defaultValue: "misc",
             allowNull: false,
         },
         color: {
-            type: DataTypes.INTEGER(6),
+            type: DataTypes.INTEGER,
             defaultValue: 0,
             allowNull: false,
         },
