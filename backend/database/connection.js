@@ -13,7 +13,7 @@ const User_society = require('./models/User_society')(sequelize, Sequelize.DataT
 const Users = require('./models/Users')(sequelize, Sequelize.DataTypes);
 
 
-module.exports = { society };
+module.exports = { Announcements, Events, Societies, User_society, Users };
 
 if (NODE_ENV == 'development') {
     const force = process.argv.includes('--forcesync');
