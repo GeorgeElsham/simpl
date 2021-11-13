@@ -4,7 +4,7 @@
     <div class="announcements">
       <div class="block"  v-for="(u, i) in soc.updates" :key="i">
         <div class="title">{{ u.title }}</div>
-        <div class="date">{{ u.date }}</div>
+        <div class="date">{{ u.date.toLocaleDateString("en-US") }}</div>
       </div>
     </div>
   </div>

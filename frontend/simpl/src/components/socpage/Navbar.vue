@@ -26,7 +26,8 @@ export default {
 </script>
 <style scoped>
 .container-hor {
-  margin: 2.5% 5%;
+    width: 90vw;
+  margin: 2.5% 0%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

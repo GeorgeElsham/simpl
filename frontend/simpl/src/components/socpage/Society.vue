@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="global">
   <navbar :society="soc" />
   <announcements :soc="soc" />
 </div>
@@ -40,4 +40,7 @@ export default {
 </script>
 
 <style scoped>
+.global {
+    background-color: #ffff;
+}
 </style>
