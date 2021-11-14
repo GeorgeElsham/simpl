@@ -13,6 +13,16 @@ router.get('/test', async (req, res) => {
 
 });
 
+router.get('/:soc/members', async (req, res) => {
+    const society = await SocietyService.getById(req.params.soc);
+    const users = await society[0].getUsers();
+
+    res.status(200).json({
+        status: 'success',
+        users,
+    });
+});
+
 router.get('/:soc/announcements', async (req, res) => {
     const society = await AnnouncementService.getBySoc(req.params.soc)
 
