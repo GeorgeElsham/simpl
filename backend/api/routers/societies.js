@@ -50,12 +50,6 @@ router.post('/:soc/leave', async(req, res) => {
     }
 })
 
-router.get('/test', async (req, res) => {
-    console.log(req.user.id);
-    SocietyService.getAll();
-    res.sendStatus(200);
-});
-
 router.get('/:soc/members', async (req, res) => {
     const society = await SocietyService.getById(req.params.soc);
     const users = await society[0].getUsers();
