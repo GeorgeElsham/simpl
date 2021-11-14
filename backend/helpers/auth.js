@@ -1,3 +1,5 @@
+const { UserService } = require("../database/services");
+
 const cookieCache = new Map();
 
 exports.checkAuth = (req, res, next) => {
@@ -13,9 +15,10 @@ exports.checkAuth = (req, res, next) => {
     const storedCookie = cookieCache.get(incomingCookie)
 
     // If we have cookie stored let them through
-    if (nonAuthRoutes.includes(req.path) || (storedCookie && storedCookie > Date.now())) {
+    if (!nonAuthRoutes.includes(req.path) || (storedCookie && storedCookie > Date.now())) {
         if (storedCookie) {
-            req.user = incomingCookie.split(':')[1]
+            const user_id = incomingCookie.split(':')[1]
+            req.user = UserService.getById(user_id)
         }
         next();
     }

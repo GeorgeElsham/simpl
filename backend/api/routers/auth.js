@@ -41,8 +41,8 @@ router.post('/sign-up', async (req, res) => {
 
 router.post('/sign-out', async (req, res) => {
   if (req.user) {
-    cookieCache.delete(req.user);
-    res.send(`Signed out user with ID: '${req.user}'`);
+    cookieCache.delete(req.user.id);
+    res.send(`Signed out user with ID: '${req.user.id}'`);
   } else {
     res.send('Failed to sign out - no user ID given');
   }
@@ -50,7 +50,7 @@ router.post('/sign-out', async (req, res) => {
 
 router.patch('/edit', async (req, res) => {
   console.log('body:', JSON.stringify(req.body));
-  await account.editUser(req.user, req.body);
+  await account.editUser(req.user.id, req.body);
   res.sendStatus(200);
 });
 
