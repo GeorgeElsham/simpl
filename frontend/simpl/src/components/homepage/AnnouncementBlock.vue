@@ -1,13 +1,13 @@
 <template>
     <div class="announcement-block" ref="blockDiv">
         <div class="block-title">
-            {{ block.societyName }}
+            {{ block.name }}
         </div>
         <div class="block">
             <div class="block-body">
                 <div class="announcement" v-for="(a, i) in block.announcements" :key="i">
-                    <div class="announcement-date">{{ a.date }}</div>
-                    <div class="announcement-title">{{ a.name }}</div>
+                    <div class="announcement-date">{{ a.createdAt }}</div>
+                    <div class="announcement-title">{{ a.description }}</div>
                 </div>
             </div>
             <div class="block-scroll">
@@ -89,18 +89,20 @@
 import { setup, ref, onMounted } from 'vue'
 
 export default {
-    props: ["block"],
+    props: ["s"],
     
     setup(props) {
+
+        console.log(props.s)
 
         const blockDiv = ref(null)
 
         onMounted(() => {
-            blockDiv.value.style.background = props.block.background
+            //blockDiv.value.style.background = props.block.background
         })
 
         return {
-            block: props.block,
+            block: props.s,
             blockDiv
         }
     },

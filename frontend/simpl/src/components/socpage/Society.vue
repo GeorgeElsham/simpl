@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { ref, setup } from "vue";
+import { ref, setup, onBeforeMount } from "vue";
 import Navbar from "../socpage/Navbar.vue";
 import Announcements from "../socpage/Announcements.vue";
 import Events from "../socpage/Events.vue";
@@ -28,8 +28,8 @@ export default {
   },
   setup(props) {
 
-  onMounted(() => {
-            axios.get("http://localhost:8000" + '/api/events/all')
+  onBeforeMount(() => {
+            axios.get("https://simpl-app.herokuapp.com" + '/api/events/all')
             .then((response) => {
                 console.log(response.data)
                 events.value = response.data.data

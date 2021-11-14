@@ -5,7 +5,7 @@
             <div class="title-line"></div>
         </div>
         <div id="carousel">
-            <announcement-block v-for="(block, i) in announcementBlocks" :block="block" :key="i"  />
+            <announcement-block v-for="(s, i) in societies" :s="s" :key="i"  />
         </div>
     </div>
 </template>
@@ -59,6 +59,8 @@ export default {
     },
     
     setup(props) {
+
+        const societies = ref()
 
         const announcementBlocks = ref([
             {
@@ -138,22 +140,35 @@ export default {
         
         onMounted(() => {
             
-            axios.get("http://localhost:8000" + '/api/societies')
+            axios.get("https://simpl-app.herokuapp.com" + '/api/societies')
             .then((response) => {
                 console.log(response.data)
-                let societies = response.data.data
+                societies.value = response.data.data
+                window.societies = societies
 
-                axios.get("http://localhost:8000" + "/api/announcements/all")
+                axios.get("https://simpl-app.herokuapp.com" + "/api/announcements/all")
                 .then((response) => {
                     let announcements = response.data.data
+                    window.announcements = announcements
                     console.log(societies, announcements)
+
+                    announcements.forEach(a => {
+                        console.log(societies.value)
+                        let soc = societies.value.find(s => s.id == a.society_id)
+                        //console.log(soc)
+                        if (!soc) return
+                        if (!soc.announcements) soc.announcements = []
+                        soc.announcements.push(a)
+                    })
+
+                    console.log(societies.value)
                 })
                 
             })
 
         })
         return { 
-            announcementBlocks
+            societies
         }
     },
 

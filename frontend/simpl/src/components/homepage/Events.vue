@@ -88,7 +88,7 @@ export default {
 
         const events = ref()
         onMounted(() => {
-            axios.get("http://localhost:8000" + '/api/events/all')
+            axios.get("https://simpl-app.herokuapp.com" + '/api/events/all')
             .then((response) => {
                 console.log(response.data)
                 events.value = response.data.data

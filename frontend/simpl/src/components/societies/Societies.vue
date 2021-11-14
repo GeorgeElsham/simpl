@@ -80,7 +80,7 @@
 </style>
 
 <script>
-import { setup, ref, onMounted } from 'vue'
+import { setup, ref } from 'vue'
 
 import CreateSociety from './CreateSociety.vue'
 
@@ -92,18 +92,63 @@ export default {
     },
     
     setup(props) {
+
         const toggle = ref(false)
 
         const societies = [
+            {
+                name: "ECSS",
+                id: 1,
+                member: true,
+            },
+            {
+                name: "dSoc",
+                id: 2,
+            },
+            {
+                name: "CyberSoc",
+                id: 3,
+            },
+            {
+                name: "Games Society",
+                id: 1,
+                member: true,
+            },
+            {
+                name: "Spaceflight Society",
+                id: 2,
+            },
+            {
+                name: "Video Games & Esports Society",
+                id: 3,
+            },
+            {
+                name: "Wireless Society",
+                id: 1,
+                member: true,
+            },
+            {
+                name: "Asian Cultural Society",
+                id: 2,
+            },
+            {
+                name: "ABACUS",
+                id: 3,
+            },
+            {
+                name: "Cymru Soc",
+                id: 1,
+                member: true,
+            },
+            {
+                name: "Archaeology Society",
+                id: 2,
+            },
+            {
+                name: "Artificial Intelligence Society",
+                id: 3,
+            },
         ]
-
-        onMounted(() => {
-                axios.get("http://localhost:8000" + '/api/societies/')
-                .then((response) => {
-                    societies = response.data.data
-                    console.log(societies)
-                })
-        })
 
         return { 
             societies,
