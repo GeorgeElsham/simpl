@@ -17,6 +17,14 @@ exports.get = (uuids) => {
     }
 }
 
+exports.getBySoc = (uuid) => {
+    return Announcements.findAll({
+        where: {
+            society_id: uuid,
+        }
+    });
+}
+
 exports.create = (data) => {
     return Events.create({
         id: data.id,

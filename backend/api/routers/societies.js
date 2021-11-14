@@ -1,5 +1,5 @@
 const express = require('express');
-const { SocietyService, AnnouncementService } = require('../../database/services');
+const { SocietyService, AnnouncementService, EventService } = require('../../database/services');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -41,4 +41,23 @@ router.post('/:soc/announcements/create', async (req, res) => {
     });
 });
 
+router.get('/:soc/events', async (req, res) => {
+
+    const events = await EventService.getBySoc(req.params.soc)
+
+    res.status(200).json({
+        status: 'success',
+        data: events,
+    });
+})
+
+router.post('/:soc/events/create', async (req, res) => {
+
+    const event = await EventService.create(req.body);
+
+    res.status(200).json({
+        status: 'success',
+        data: event,
+    });
+})
 module.exports = router;
