@@ -28,7 +28,7 @@ TODO Description
 ✔️ POST  /api/auth/sign-in - Signs in
 ✔️ POST  /api/auth/sign-up - Signs up
 ✔️ POST  /api/auth/sign-out - Signs out
-❌ PATCH /api/auth/edit - Edit user data
+✔️ PATCH /api/auth/edit - Edit user data
 
 ❌ GET   /api/societies - Get all societies for a specific user
 ❌ GET   /api/societies/:soc/ - Info about soc ( only if that user is in it )
