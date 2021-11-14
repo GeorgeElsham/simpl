@@ -15,8 +15,8 @@
 </template>
 
 <script>
-
 import { setup, ref } from "vue"
+import { state } from "../../state.js"
 
 export default {
     setup() {
@@ -28,8 +28,19 @@ export default {
         let password = passwordInput.value;
 
         if (email !== null && password !== null && email != "") {
-          //axios.post()
-          console.log(email, password)
+          const base = process.env.BACKEND_HOSTNAME;
+          axios.post(base + '/api/auth/sign-in', {
+            email: email,
+            password: password
+          })
+          .then((response) => {
+            if (response.data.signedIn) {
+              state.loggedIn = true
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+          });
         }
       }
 
