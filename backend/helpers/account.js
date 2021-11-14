@@ -36,6 +36,10 @@ async function signUp(name, email, password) {
   return true;
 }
 
+function editUser(usedId, data) {
+  UserService.update(usedId, data);
+}
+
 
 // Internal functions
 function _checkPassword(password, hashedPassword) {
@@ -79,4 +83,5 @@ function _hashPassword(password, salt) {
 module.exports = {
   signIn,
   signUp,
+  editUser,
 };

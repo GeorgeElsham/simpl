@@ -48,10 +48,12 @@ exports.getByIds = (uuids) => {
 }
 
 exports.update = (uuid, data) => {
-    return Users.update({
-        ...data,
-        where: {
-            id: uuid,
-        }
-    })
+    return Users.update(
+        { ...data },
+        {
+            where: {
+                id: uuid,
+            }
+        },
+    )
 }
