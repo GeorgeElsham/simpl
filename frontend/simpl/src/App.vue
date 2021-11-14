@@ -31,10 +31,11 @@ export default {
 
     setup() {
 
-        axios.get("https://simpl-app.herokuapp.com" + '/api/auth/protected')
+        axios.get("http://localhost:8000" + '/api/auth/protected')
         .then((response) => {
             if(response.data.working) {
                 state.loggedIn.value = true
+                // state.name.value = 
             }
         })
         .catch((e) => {

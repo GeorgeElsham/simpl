@@ -17,8 +17,9 @@
             </div>
         </fieldset>
 
-        <div id="list">
-            <Event v-for="(e, i) in filteredEvents" :key="i" :event="e" />
+        <div id="list" v-if="events?.length > 0">
+            <Event v-if="!filterMode" v-for="(e, i) in events" :key="i" :event="e" />
+            <Event v-else v-for="(e, ii) in events.filter((e,iii) => iii % 15 == 0)" :key="ii" :event="e" />
         </div>
     </div>
 </template>
@@ -71,7 +72,11 @@ export default {
 
         const filterMode = ref(false)
 
+        const events = ref()
+
+
         const setFilter = (mode) => {
+            console.log(mode)
             switch (mode) {
                 case "all":
                     filterMode.value = false                    
@@ -86,21 +91,18 @@ export default {
             }
         }
 
-        const events = ref()
         onMounted(() => {
-            axios.get("https://simpl-app.herokuapp.com" + '/api/events/all')
+            axios.get("http://localhost:8000" + '/api/events/all')
             .then((response) => {
                 console.log(response.data)
                 events.value = response.data.data
             })
         })
 
-        const filteredEvents = computed(() => {
-            return filterMode.value ? events.value.filter((e,i) => i % 15 == 0) : events.value
-        })
         
         return { 
-            filteredEvents,
+            events,
+            filterMode,
             setFilter
         }
     },

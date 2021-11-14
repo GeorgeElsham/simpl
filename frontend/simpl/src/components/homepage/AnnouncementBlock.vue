@@ -6,14 +6,14 @@
         <div class="block">
             <div class="block-body">
                 <div class="announcement" v-for="(a, i) in block.announcements" :key="i">
-                    <div class="announcement-date">{{ a.createdAt }}</div>
+                    <div class="announcement-date">{{ new Date(a.createdAt).getUTCDate() }}/{{ new Date(a.createdAt).getUTCMonth()+1 }}</div>
                     <div class="announcement-title">{{ a.description }}</div>
                 </div>
             </div>
-            <div class="block-scroll">
+            <!-- <div class="block-scroll">
                 <img src="@/assets/up-arrow.svg">
                 <img src="@/assets/down-arrow.svg">
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -26,6 +26,8 @@
     border-radius: 10px;
     margin-left: 20px;
     min-width: 350px;
+    max-height: 400px;
+    overflow-y: scroll;
 
 }
 
@@ -93,12 +95,21 @@ export default {
     
     setup(props) {
 
-        console.log(props.s)
+                let gradients = ["linear-gradient(45deg, #fc466b, #3f5efb)", 
+        "linear-gradient(45deg, #fc4a1a, #f7b733)",
+        "linear-gradient(45deg, #00f260, #0575e6)",
+        "linear-gradient(45deg, #0f0c29, #302b63, #24243e)",
+        "linear-gradient(45deg, #0f0c29, #ffefba, #ffffff)",
+        "linear-gradient(45deg, #0f0c29, #ff416c, #ff4b2b)",
+        "linear-gradient(45deg, #03001e, #7303c0, #ec38bc, #fdeff9)",
+        "linear-gradient(45deg, #396afc, #2948ff)",
+        "linear-gradient(45deg, #283c86, #45a247)",
+        ]
 
         const blockDiv = ref(null)
 
         onMounted(() => {
-            //blockDiv.value.style.background = props.block.background
+            blockDiv.value.style.background = gradients[Math.floor(Math.random()*gradients.length)]
         })
 
         return {

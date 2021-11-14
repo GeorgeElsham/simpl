@@ -45,7 +45,7 @@
 </style>
 
 <script>
-import { setup, ref, onMounted } from 'vue'
+import { setup, ref, onMounted, getTransitionRawChildren } from 'vue'
 import axios from "axios"
 
 
@@ -137,23 +137,26 @@ export default {
             },
         ])
 
+
+
         
         onMounted(() => {
             
-            axios.get("https://simpl-app.herokuapp.com" + '/api/societies')
+            axios.get("http://localhost:8000" + '/api/societies')
             .then((response) => {
                 console.log(response.data)
                 societies.value = response.data.data
                 window.societies = societies
+                
 
-                axios.get("https://simpl-app.herokuapp.com" + "/api/announcements/all")
+                axios.get("http://localhost:8000" + "/api/announcements/all")
                 .then((response) => {
                     let announcements = response.data.data
                     window.announcements = announcements
                     console.log(societies, announcements)
 
                     announcements.forEach(a => {
-                        console.log(societies.value)
+                        // console.log(societies.value)
                         let soc = societies.value.find(s => s.id == a.society_id)
                         //console.log(soc)
                         if (!soc) return

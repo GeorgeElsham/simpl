@@ -7,7 +7,7 @@
                 <div class="title-line"></div>
             </div>
             <div class="societies">
-                <router-link v-for="(s, i) in societies.filter(s => s.member)" :key="i" :to="'/societies/'+s.id" style="text-decoration: none; color: inherit;">
+                <router-link v-for="(s, i) in societies.filter((s,ii) => ii % 15 == 0)" :key="i" :to="'/societies/'+s.id" style="text-decoration: none; color: inherit;">
                     <div class="society">
                         <p>{{s.name}}</p>
                     </div>
@@ -22,7 +22,7 @@
                 <div class="title-line"></div>
             </div>
             <div class="societies">
-                <router-link v-for="(s, i) in societies.filter(s => !s.member)" :key="i" :to="'/societies/'+s.id" style="text-decoration: none; color: inherit;">
+                <router-link v-for="(s, i) in societies" :key="i" :to="'/societies/'+s.id" style="text-decoration: none; color: inherit;">
                     <div class="society">
                         <p>{{s.name}}</p>
                     </div>
@@ -80,7 +80,9 @@
 </style>
 
 <script>
-import { setup, ref } from 'vue'
+import { setup, ref, onMounted } from 'vue'
+import axios from "axios"
+
 
 import CreateSociety from './CreateSociety.vue'
 
@@ -95,60 +97,17 @@ export default {
 
         const toggle = ref(false)
 
-        const societies = [
-            {
-                name: "ECSS",
-                id: 1,
-                member: true,
-            },
-            {
-                name: "dSoc",
-                id: 2,
-            },
-            {
-                name: "CyberSoc",
-                id: 3,
-            },
-            {
-                name: "Games Society",
-                id: 1,
-                member: true,
-            },
-            {
-                name: "Spaceflight Society",
-                id: 2,
-            },
-            {
-                name: "Video Games & Esports Society",
-                id: 3,
-            },
-            {
-                name: "Wireless Society",
-                id: 1,
-                member: true,
-            },
-            {
-                name: "Asian Cultural Society",
-                id: 2,
-            },
-            {
-                name: "ABACUS",
-                id: 3,
-            },
-            {
-                name: "Cymru Soc",
-                id: 1,
-                member: true,
-            },
-            {
-                name: "Archaeology Society",
-                id: 2,
-            },
-            {
-                name: "Artificial Intelligence Society",
-                id: 3,
-            },
-        ]
+        const societies = ref([])
+
+        onMounted(() => {
+            
+            axios.get("http://localhost:8000" + '/api/societies/all')
+            .then((response) => {
+                console.log(response.data)
+                societies.value = response.data.data
+            })
+
+        })
 
         return { 
             societies,

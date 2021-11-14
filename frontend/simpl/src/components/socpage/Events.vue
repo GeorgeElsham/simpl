@@ -4,8 +4,7 @@
     <div class="list">
       <div class="event" v-for="(e, i) in soc.events" :key="i">
         <div>
-          {{ e.date.toLocaleDateString("en-US") }} ––
-          {{ e.title }}
+          <p style="max-width: 300px">{{ new Date(e.start_date).getUTCDate() }}/{{ new Date(e.start_date).getUTCMonth()+1 }} –– {{ e.title }}</p>
         </div>
         <router-link class="signup" to="/">SignUp</router-link>
       </div>

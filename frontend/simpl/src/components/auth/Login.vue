@@ -30,7 +30,7 @@ export default {
 
         if (email !== null && password !== null && email != "") {
           const base = process.env.BACKEND_HOSTNAME;
-          axios.post("https://simpl-app.herokuapp.com" + '/api/auth/sign-in', {
+          axios.post("http://localhost:8000" + '/api/auth/sign-in', {
             email: email,
             password: password
           },

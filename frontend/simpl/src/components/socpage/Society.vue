@@ -1,5 +1,5 @@
 <template>
-  <div class="global">
+  <div class="global" v-if="loaded">
     <navbar :society="soc" />
     <div class="block">
         You are not a member of this society yet <div class="menu-button">Join now!</div>
@@ -13,11 +13,12 @@
 </template>
 
 <script>
-import { ref, setup, onBeforeMount } from "vue";
+import { ref, setup, onMounted } from "vue";
 import Navbar from "../socpage/Navbar.vue";
 import Announcements from "../socpage/Announcements.vue";
 import Events from "../socpage/Events.vue";
 import Votings from "../socpage/Votings.vue";
+import axios from "axios"
 
 export default {
   components: {
@@ -28,58 +29,37 @@ export default {
   },
   setup(props) {
 
-  onBeforeMount(() => {
-            axios.get("https://simpl-app.herokuapp.com" + '/api/events/all')
+    const soc = ref()
+    const loaded = ref(false)
+
+  onMounted(() => {
+            axios.get("http://localhost:8000" + '/api/societies/'+vrouter.currentRoute.value.params.id)
             .then((response) => {
-                console.log(response.data)
-                events.value = response.data.data
+                soc.value = response.data.data[0]
+                console.log(soc.value)
+                axios.get("http://localhost:8000" + '/api/societies/'+vrouter.currentRoute.value.params.id+'/announcements')
+                .then((response) => {
+                    soc.value.announcements = response.data.data
+                console.log(soc.value)
+
+                    axios.get("http://localhost:8000" + '/api/societies/'+vrouter.currentRoute.value.params.id+'/events')
+                    .then((response) => {
+                console.log(soc.value)
+
+                        soc.value.events = response.data.data
+
+                        loaded.value = true
+
+                        
+                    })
+                    
+                })
+
             })
         })
-    const soc = ref({
-      name: "Some Society",
-      updates: [
-        {
-          title: "some title 1",
-          date: new Date("2017-11-12"),
-        },
-        {
-          title: "some title 2",
-          date: new Date("2017-11-12"),
-        },
-        {
-          title: "some title 3",
-          date: new Date("2017-11-12"),
-        },
-      ],
-      events: [
-        {
-          title: "some title 1",
-          date: new Date("2017-11-12"),
-        },
-        {
-          title: "some title 2",
-          date: new Date("2017-11-12"),
-        },
-        {
-          title: "some title 3",
-          date: new Date("2017-11-12"),
-        },
-                {
-          title: "some title 1",
-          date: new Date("2017-11-12"),
-        },
-        {
-          title: "some title 2",
-          date: new Date("2017-11-12"),
-        },
-        {
-          title: "some title 3",
-          date: new Date("2017-11-12"),
-        },
-      ],
-    });
+    
 
-    return { soc };
+    return { soc, loaded };
   },
 };
 </script>
