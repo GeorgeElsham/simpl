@@ -26,7 +26,7 @@
 <style>
 
 #home {
-    height: 100%;
+    min-height: 100%;
     display: grid;
     grid-template-columns: 60vw;
     grid-template-rows: 50px minmax(0, 1fr) minmax(0, 2fr);
