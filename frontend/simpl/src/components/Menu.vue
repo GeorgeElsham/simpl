@@ -1,8 +1,16 @@
 <template>
     <div id="menu">
         <div id="menu-left" class="menu-buttons">
-            <div class="menu-button">Societies</div>
-            <div class="menu-button">Button2</div>
+            <div class="menu-button">
+                <router-link to="/societies" style="text-decoration: none; color: inherit;">
+                    Socieities
+                </router-link>
+            </div>
+            
+            <router-link to="/" style="text-decoration: none; color: inherit;">
+                    <div class="menu-button">Homepage</div>
+            </router-link>
+            
 
         </div>
         <div id="menu-heading">

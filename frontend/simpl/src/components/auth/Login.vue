@@ -6,7 +6,9 @@
       <input class="field" type="password" placeholder="password" v-model="passwordInput" />
       <div class="container">
         <input v-on:click="login()" id="login" type="submit" value="Login" />
-        <input id="signup" type="submit" value="SignUp" />
+        <router-link to="/signup" style="text-decoration: none; color: inherit; width: 100%;">
+            <input id="signup" type="submit" value="SignUp" />
+        </router-link>
       </div>
     </div>
   </div>
