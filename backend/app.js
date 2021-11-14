@@ -15,7 +15,9 @@ const { checkAuth } = require('./helpers/auth');
 
 (async () => {
     await dbInit();
-    seed(services);
+    if (process.argv.includes('--seed')) {
+        seed(services);
+    }
 })()
 
 app.use(helmet());

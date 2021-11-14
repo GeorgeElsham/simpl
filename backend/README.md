@@ -18,6 +18,8 @@ TODO Description
 
 `--forcesync` Hard syncs the database ( deletes all data and rebuilds it )
 
+`--seed` Adds test data to the database
+
 ### Documentation
 
 ✔️ GET   / - Home
