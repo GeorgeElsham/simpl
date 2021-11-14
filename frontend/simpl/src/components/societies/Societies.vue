@@ -53,6 +53,7 @@
     user-select: none;
     cursor: pointer;
     margin-top: 15px;
+    border-radius: 5px;
 
 }
 
