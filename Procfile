@@ -1,1 +1,1 @@
-web: cd ./backend && npm run dev:sync
+web: cd ./backend && node server.js --sync --forcesync --seed
