@@ -48,4 +48,10 @@ router.post('/sign-out', async (req, res) => {
   }
 });
 
+router.patch('/edit', async (req, res) => {
+  console.log('body:', JSON.stringify(req.body));
+  await account.editUser(req.user, req.body);
+  res.sendStatus(200);
+});
+
 module.exports = router;
