@@ -1,15 +1,8 @@
 const express = require('express');
+const { v4 } = require('uuid');
 const account = require('../../helpers/account');
 const { cookieCache } = require('../../helpers/auth');
 const router = express.Router();
-
-router.get('/setcookie', (req, res) => {
-  // Cookie logic
-  const cookieValue = 'testcookie' + Math.random();
-  cookieCache.set(cookieValue, Date.now() + 1209600000)
-  res.cookie('X-Auth', cookieValue, { maxAge: 1209600000 }); // 14 Days
-  res.sendStatus(200);
-});
 
 router.get('/protected', (req, res) => {
   // Cookie logic
@@ -20,6 +13,11 @@ router.get('/protected', (req, res) => {
 
 router.post('/sign-in', async (req, res) => {
   const { email, password } = req.query;
+
+  // Cookie logic
+  const cookieValue = v4();
+  cookieCache.set(cookieValue, Date.now() + 1209600000)
+  res.cookie('X-Auth-Simpl', cookieValue, { maxAge: 1209600000 }); // 14 Days
 
   const signedIn = await account.signIn(email, password);
   res.send(`Signed in: ${signedIn}`);
