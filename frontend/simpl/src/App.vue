@@ -6,7 +6,7 @@
                 <component :is="Component" />
             </transition>
         </router-view> -->
-        <div id="spacer"></div>
+        <div id="spacer" v-if="loggedIn"></div>
         <router-view>
         </router-view>
     </div>
@@ -18,6 +18,7 @@ import { setup } from "vue"
 
 import Home from "./components/homepage/Home.vue"
 import Menu from "./components/Menu.vue"
+import axios from "axios"
 
 import state from "./state.js"
 
@@ -29,6 +30,17 @@ export default {
     },
 
     setup() {
+
+        axios.get("http://localhost:8000" + '/api/auth/protected')
+        .then((response) => {
+            if(response.data.working) {
+                state.loggedIn.value = true
+            }
+        })
+        .catch((e) => {
+        console.log(e);
+        });
+
         return {
             loggedIn: state.loggedIn
         }

@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import { setup, ref } from "vue"
+import { setup, ref, useRoute } from "vue"
 import state from "../../state.js"
 import axios from "axios"
 
 export default {
-    setup(props, {root}) {
+    setup(props) {
       const emailInput = ref(null)
       const passwordInput = ref(null)
 
@@ -33,11 +33,13 @@ export default {
           axios.post("http://localhost:8000" + '/api/auth/sign-in', {
             email: email,
             password: password
-          })
+          },
+          {withCredentials: true})
           .then((response) => {
             if (response.data.success || response.data.loggedIn) {
-              state.loggedIn = true
-              root.$router.go("/")
+              state.loggedIn.value = true
+              window.vrouter.push("/")
+
             }
           })
           .catch((e) => {
