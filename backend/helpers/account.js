@@ -39,7 +39,7 @@ async function signUp(name, email, password) {
 
 
 // Internal functions
-async function _checkPassword(password, hashedPassword) {
+function _checkPassword(password, hashedPassword) {
   return new Promise((resolve, reject) => {
     bcrypt.compare(password, hashedPassword, (err, result) => {
       if (err) {

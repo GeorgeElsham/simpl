@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/sign-in', async (req, res) => {
-  const { username, password } = req.query;
-  console.log(username, password);
+  const { email, password } = req.query;
+  console.log(email, password);
 
   await account.signUp('George', 'ge1g21@soton.ac.uk', 'password123');
 
