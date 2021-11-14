@@ -45,7 +45,9 @@
 </style>
 
 <script>
-import { setup, ref } from 'vue'
+import { setup, ref, onMounted } from 'vue'
+import axios from "axios"
+
 
 import AnnouncementBlock from "./AnnouncementBlock.vue"
 
@@ -132,6 +134,24 @@ export default {
                 ]
             },
         ])
+
+        
+        onMounted(() => {
+            
+            axios.get("http://localhost:8000" + '/api/societies')
+            .then((response) => {
+                console.log(response.data)
+                let societies = response.data.data
+
+                axios.get("http://localhost:8000" + "/api/announcements/all")
+                .then((response) => {
+                    let announcements = response.data.data
+                    console.log(societies, announcements)
+                })
+                
+            })
+
+        })
         return { 
             announcementBlocks
         }

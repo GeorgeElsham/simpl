@@ -96,7 +96,7 @@ export default {
         })
 
         const filteredEvents = computed(() => {
-            return filterMode.value ? events.value.filter(e => e.attending) : events.value
+            return filterMode.value ? events.value.filter((e,i) => i % 15 == 0) : events.value
         })
         
         return { 

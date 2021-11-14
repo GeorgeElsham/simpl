@@ -21,8 +21,8 @@ import axios from "axios"
 
 export default {
     setup(props) {
-      const emailInput = ref(null)
-      const passwordInput = ref(null)
+      const emailInput = ref("Barbara.Hirthe63@gmail.com")
+      const passwordInput = ref("password")
 
       const login = () => {
         let email = emailInput.value;

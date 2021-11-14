@@ -3,7 +3,7 @@
         <div class="content-wrapper">
             <div class="event-header">
                 <div class="event-title">{{ event.title }}</div>
-                <div class="event-date">{{ event.created_at }}</div>
+                <div class="event-date">{{ new Date(event.start_date).toLocaleString("en-US") }}</div>
             </div>
 
             <div class="event-body">

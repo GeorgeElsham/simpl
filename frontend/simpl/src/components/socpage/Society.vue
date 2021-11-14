@@ -27,6 +27,14 @@ export default {
     Votings
   },
   setup(props) {
+
+  onMounted(() => {
+            axios.get("http://localhost:8000" + '/api/events/all')
+            .then((response) => {
+                console.log(response.data)
+                events.value = response.data.data
+            })
+        })
     const soc = ref({
       name: "Some Society",
       updates: [
