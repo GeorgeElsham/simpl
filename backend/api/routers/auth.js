@@ -39,4 +39,13 @@ router.post('/sign-up', async (req, res) => {
   res.send(`Signed up: ${signedUp}`);
 });
 
+router.post('/sign-out', async (req, res) => {
+  if (req.user) {
+    cookieCache.delete(req.user);
+    res.send(`Signed out user with ID: '${req.user}'`);
+  } else {
+    res.send('Failed to sign out - no user ID given');
+  }
+});
+
 module.exports = router;
