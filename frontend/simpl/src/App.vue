@@ -1,8 +1,15 @@
 <template>
-<div class="root">
-    <Menu v-if="loggedIn" />
-    <router-view style="flex:1" />
-</div>
+    <div class="root">
+        <Menu v-if="loggedIn" />
+        <!-- <router-view v-slot="{ Component }" style="flex:1">
+            <transition name="slide-fade" mode="out-in">
+                <component :is="Component" />
+            </transition>
+        </router-view> -->
+        <div id="spacer"></div>
+        <router-view>
+        </router-view>
+    </div>
 </template>
 
 <script>
@@ -72,5 +79,26 @@ html, * {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: white;
+}
+
+#spacer {
+    height: 50px;
+    width: 100%;
+    background-color: white;
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.slide-fade-enter {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slide-fade-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
 }
 </style>

@@ -10,6 +10,7 @@
         <router-link class="signup" to="/">Vote Now!</router-link>
       </div>
     </div>
+   <div class="menu-button menu-button-gray" @click="toggle = !toggle">Create voting</div>
   </div>
 </template>
 

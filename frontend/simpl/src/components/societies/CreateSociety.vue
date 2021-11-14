@@ -1,16 +1,15 @@
 <template>
-    <div id="announcement-modal" v-if="visible">
+    <div id="society-modal" v-if="visible">
         <div id="modal-title">
-            Create announcement
+            Create society
             <div style="margin-left: 5px; user-select: none" @click="close">❌</div>
         </div>
         <div id="wrapper">
-            <input type="text" class="modal-input" placeholder="Title" ref="titleInput">
+            <input type="text" class="modal-input" placeholder="Name" ref="titleInput">
             <textarea name="Text1" cols="21" rows="5" class="modal-input" placeholder="Description" ref="descriptionInput"></textarea>
             <button class="modal-button" @click="create">Create</button>
         </div>
     </div>
-
 </template>
 
 <style scoped>
@@ -19,7 +18,7 @@
     font-size: 20px;
 }
 
-#announcement-modal {
+#society-modal {
 
     border: 2px black solid;
     display: inline-block;
@@ -28,9 +27,12 @@
     padding-top: 20px;
     padding-bottom: 20px;
     z-index: 10;
-
-    position: absolute;
     background-color: white;
+
+    position: fixed;
+    /* box-sizing: content-box; */
+    /* position: fixed; */
+    /* margin-left: auto; */
 }
 
 #wrapper {
@@ -79,7 +81,7 @@ export default {
         })
 
         const create = () => {
-            if (titleInput.value.value && descriptionInput.value.value) {
+            if (titleInput.value.value && summaryInput.value.value && descriptionInput.value.value && dateInput.value.value) {
                 // submit
             }
         }

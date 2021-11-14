@@ -29,7 +29,8 @@
     padding-top: 20px;
     padding-bottom: 20px;
     z-index: 10;
-    /* position: fixed; */
+    position: absolute;
+    background-color: white;
     /* box-sizing: content-box; */
     /* position: fixed; */
     /* margin-left: auto; */

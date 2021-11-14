@@ -1,5 +1,6 @@
 <template>
     <div id="societies">
+        <div class="menu-button menu-button-gray" style="position: absolute; right: 20px; top: 20px" @click="toggle = !toggle">Create society</div>
         <div id="your-societies">
             <div class="title">
                 <p>Your societies</p>
@@ -29,26 +30,29 @@
             </div>
         </div>
     </div>
+    <CreateSociety :toggle="toggle" />
 </template>
 
 <style scoped>
 
 #societies {
     background-color: white;
+    position: relative;
     /* margin-top: ; */
 }
 
 .society {
     background-color: #2196F3;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     color: white;
     margin-left: 10px;
     margin-right: 10px;
     user-select: none;
     cursor: pointer;
+    margin-top: 15px;
 
 }
 
@@ -66,6 +70,8 @@
     padding: 20px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 
@@ -73,12 +79,20 @@
 </style>
 
 <script>
-import { setup } from 'vue'
+import { setup, ref } from 'vue'
+
+import CreateSociety from './CreateSociety.vue'
 
 export default {
     props: [],
+
+    components: {
+        CreateSociety
+    },
     
     setup(props) {
+
+        const toggle = ref(false)
 
         const societies = [
             {
@@ -136,7 +150,8 @@ export default {
         ]
 
         return { 
-            societies
+            societies,
+            toggle
         }
     },
 
