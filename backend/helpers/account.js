@@ -18,8 +18,7 @@ async function signIn(email, password) {
 
 async function signUp(name, email, password) {
   if (await UserService.getByEmail(email)) {
-    console.error('User is already signed up');
-    return;
+    return false;
   }
 
   const salt = await _generateSalt();
@@ -31,15 +30,13 @@ async function signUp(name, email, password) {
     password_hash: hashedPassword,
     verified: Math.random() > 0.1,
   });
-  console.log('user:');
-  console.log(JSON.stringify(user));
 
-  console.log(`Sign in user ${email}, hashed password: ${hashedPassword}`);
+  return true;
 }
 
 
 // Internal functions
-async function _checkPassword(password, hashedPassword) {
+function _checkPassword(password, hashedPassword) {
   return new Promise((resolve, reject) => {
     bcrypt.compare(password, hashedPassword, (err, result) => {
       if (err) {

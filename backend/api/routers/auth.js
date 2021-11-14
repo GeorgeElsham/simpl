@@ -7,15 +7,17 @@ router.get('/', (req, res) => {
 });
 
 router.post('/sign-in', async (req, res) => {
-  const { username, password } = req.query;
-  console.log(username, password);
-
-  await account.signUp('George', 'ge1g21@soton.ac.uk', 'password123');
+  const { email, password } = req.query;
 
   const signedIn = await account.signIn(email, password);
-  console.log('signedIn:', signedIn);
+  res.send(`Signed in: ${signedIn}`);
+});
 
-  res.send('Test message on /sign-in');
+router.post('/sign-up', async (req, res) => {
+  const { name, email, password } = req.query;
+
+  const signedUp = await account.signUp(name, email, password);
+  res.send(`Signed up: ${signedUp}`);
 });
 
 module.exports = router;
