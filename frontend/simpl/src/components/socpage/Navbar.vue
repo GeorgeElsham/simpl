@@ -30,7 +30,7 @@ export default {
   margin: 2.5% 0%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 a.link {

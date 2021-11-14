@@ -27,8 +27,8 @@
 
 #home {
     height: 100%;
-    display: grid;
-    grid-template-columns: 60vw;
+    display: grid; 
+    grid-template-columns: 70vw;
     grid-template-rows: 50px minmax(0, 1fr) minmax(0, 2fr);
     background-color: white;
 }
@@ -37,6 +37,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
+    
 }
 
 #menu-heading {
