@@ -22,7 +22,8 @@
 </style>
 
 <script>
-import { setup } from 'vue'
+import { setup, onMounted, ref } from 'vue'
+import axios from "axios"
 
 import Announcements from "./Announcements.vue"
 import Events from "./Events.vue"
@@ -36,6 +37,11 @@ export default {
     },
     
     setup(props) {
+
+
+        const announcements = ref()
+
+
         return { }
     },
 

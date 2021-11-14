@@ -2,12 +2,12 @@
     <div class="event">
         <div class="content-wrapper">
             <div class="event-header">
-                <div class="event-title">{{ event.name }}</div>
-                <div class="event-date">{{ event.date }}</div>
+                <div class="event-title">{{ event.title }}</div>
+                <div class="event-date">{{ event.created_at }}</div>
             </div>
 
             <div class="event-body">
-                <div class="event-text">{{ event.body }}</div>
+                <div class="event-text">{{ event.description }}</div>
             </div>
         </div>
 
