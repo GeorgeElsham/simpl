@@ -6,7 +6,7 @@ const { logger } = require("../../helpers/logger");
 // Morgan to use our custom logger instead of the console.log.
 const stream = {
   write: (message) => {
-      const status = Number(message.slice(4,7))
+      const status = Number(message.slice(0, 2))
 
       if (status < 300) {
         logger.info(message)
@@ -23,7 +23,7 @@ const morganMiddleware = morgan(
   // The message format is made from tokens, and each token is
   // defined inside the Morgan library.
   // You can create your custom token to show what do you want from a request.
-  ":method :status :url :response-time ms",
+  ":status :method :url :response-time ms",
   // Options: in this case, I overwrote the stream and the skip logic.
   // See the methods above.
   { stream }
