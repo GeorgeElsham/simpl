@@ -1,7 +1,7 @@
 <template>
     <div id="menu">
         <div id="menu-left" class="menu-buttons">
-            <div class="menu-button">All societies</div>
+            <div class="menu-button">Societies</div>
             <div class="menu-button">Button2</div>
 
         </div>

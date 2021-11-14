@@ -1,6 +1,6 @@
 <template>
     <Menu />
-    <router-view />
+    <router-view style="width: 70%" />
 </template>
 
 <script>
@@ -33,5 +33,24 @@ html, * {
     flex-direction: column;
     align-items: center;
     background-color: rgba(0,0,0,0.05);
+}
+
+.title {
+    font-size: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title p {
+    font-weight: bold;
+}
+
+.title-line {
+    margin-top: 5px;
+    height: 2px;
+    width: 300px;
+    background-color: black;
 }
 </style>

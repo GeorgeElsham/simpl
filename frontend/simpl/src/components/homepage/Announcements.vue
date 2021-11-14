@@ -1,6 +1,6 @@
 <template>
     <div id="announcements">
-        <div id="title">
+        <div class="title">
             <p>Announcements</p>
             <div class="title-line"></div>
         </div>

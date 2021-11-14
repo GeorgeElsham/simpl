@@ -18,24 +18,7 @@
     background-color: white;
 }
 
-#title {
-    font-size: 25px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-#title p {
-    font-weight: bold;
-}
-
-.title-line {
-    margin-top: 5px;
-    height: 2px;
-    width: 300px;
-    background-color: black;
-}
 
 </style>
 
