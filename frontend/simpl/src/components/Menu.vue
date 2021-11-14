@@ -43,7 +43,7 @@
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: rgba(0,0,0, 0.7);
+    background-color: #2196F3;
     margin-left: 10px;
     margin-right: 10px;
     color: white;

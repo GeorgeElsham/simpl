@@ -1,8 +1,6 @@
 <template>
     <div id="home">
 
-        <Menu />
-
         <Announcements />
         
         <Events />
@@ -16,7 +14,7 @@
     min-height: 100%;
     display: grid;
     grid-template-columns: 70vw;
-    grid-template-rows: 50px 400px minmax(0, 2fr);
+    grid-template-rows: 400px minmax(0, 2fr);
     background-color: white;
 }
 
