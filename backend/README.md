@@ -42,3 +42,5 @@ TODO Description
 ✔️ POST  /api/societies/:soc/announcements/create - Creates an announcement ( has to be owner )
 
 ✔️ GET   /api/events/all
+
+✔️ GET   /api/announcements/all
