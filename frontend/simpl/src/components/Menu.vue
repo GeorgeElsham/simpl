@@ -1,11 +1,11 @@
 <template>
     <div id="menu">
         <div id="menu-left" class="menu-buttons">
-            <div class="menu-button">
-                <router-link to="/societies" style="text-decoration: none; color: inherit;">
-                    Socieities
-                </router-link>
-            </div>
+            <router-link to="/societies" style="text-decoration: none; color: inherit;">
+                <div class="menu-button">
+                            Socieities
+                </div>
+            </router-link>
             
             <router-link to="/" style="text-decoration: none; color: inherit;">
                     <div class="menu-button">Homepage</div>
@@ -18,7 +18,6 @@
         </div>
         <div id="menu-right" class="menu-buttons">
             <div class="menu-button">Account</div>
-            <div class="menu-button">Create society</div>
         </div>
         <hr id="break">
     </div>
@@ -60,6 +59,12 @@
     color: white;
     font-weight: bold;
     border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.menu-button-gray {
+    background-color: #616161;
 }
 
 #break {

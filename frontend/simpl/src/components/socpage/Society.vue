@@ -1,6 +1,9 @@
 <template>
   <div class="global">
     <navbar :society="soc" />
+    <div class="block">
+        You are not a member of this society yet <div class="menu-button">Join now!</div>
+    </div>
     <announcements :soc="soc" />
     <div class="blocks">
       <events :soc="soc" />
@@ -87,5 +90,19 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+.block {
+    padding: 0.9rem 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-radius: 10px;
+    box-shadow: rgb(50 50 93 / 16%) 0px 3px 22px 5px;
+    width: 500px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>

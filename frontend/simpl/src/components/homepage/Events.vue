@@ -25,6 +25,10 @@
 
 <style scoped>
 
+#events {
+    margin-top: 30px;
+}
+
 #list {
     display: flex;
     flex-direction: column;

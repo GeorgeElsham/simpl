@@ -12,9 +12,8 @@
 
 #home {
     min-height: 100%;
-    display: grid;
-    grid-template-columns: 70vw;
-    grid-template-rows: 400px minmax(0, 2fr);
+    display: flex;
+    flex-direction: column;
     background-color: white;
 }
 

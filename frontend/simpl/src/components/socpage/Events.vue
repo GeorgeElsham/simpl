@@ -10,18 +10,28 @@
         <router-link class="signup" to="/">SignUp</router-link>
       </div>
     </div>
+  <div class="menu-button menu-button-gray" @click="toggle = !toggle">Create event</div>
+  <CreateEvent :toggle="toggle" />
   </div>
+
 </template>
 
 <script>
 import { ref, setup } from "vue";
+import CreateEvent from "./CreateEvent.vue"
 
 export default {
   props: ["soc"],
+  components: {
+      CreateEvent
+  },
 
   setup(props) {
+        const toggle = ref(false)
+
     return {
       soc: props.soc,
+      toggle
     };
   },
 };
