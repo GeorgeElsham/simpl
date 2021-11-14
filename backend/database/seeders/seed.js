@@ -35,8 +35,12 @@ exports.seed = async ({ AnnouncementService, EventService, SocietyService, UserS
         societies.push(await EventSeed(EventService));
     }
 
-    for (let i = 0; i < 10; i++) {
-        societies.push(await AnnouncementSeed(AnnouncementService));
+    for (let i = 0; i < 30; i++) {
+        societies.push(await AnnouncementSeed(
+            AnnouncementService,
+            users[Math.floor(Math.random() * (99 - 0 + 1) + 0)],
+            societies[Math.floor(Math.random() * (9 - 0 + 1) + 0)]
+        ));
     }
 
 
