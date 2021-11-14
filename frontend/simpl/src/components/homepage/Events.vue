@@ -55,7 +55,8 @@
 </style>
 
 <script>
-import { setup, ref, computed, reactive } from 'vue'
+import { setup, ref, computed, reactive, onMounted } from 'vue'
+import axios from "axios"
 
 import Event from "./Event.vue"
 
@@ -85,29 +86,14 @@ export default {
             }
         }
 
-        const events = ref([
-            {
-                name: "ECSS Hobbit Takeover tonight!",
-                date: "Wednesday, 10/11/2021, 19:00",
-                body: "Don’t worry if you're late, we're going to be staying at Hobbit until 11, so you definitely wont miss out on anything :) And of course, we're going to be heading down to Jesters after Hobbit, so if you would like to join us on that then make sure you bring cash and wear your jesters shoes! :BlobbleWobble:",
-
-                attending: true,
-            },
-            {
-                name: "After last week's TGM, the voting period has opened for the Autumn Elections!!!",
-                date: "Tuesday, 04/11/2021, 19:00",
-                body: "Don’t worry if you're late, we're going to be staying at Hobbit until 11, so you definitely wont miss out on anything :) And of course, we're going to be heading down to Jesters after Hobbit, so if you would like to join us on that then make sure you bring cash and wear your jesters shoes! :BlobbleWobble:",
-
-                attending: false,
-            },
-            {
-                name: "After last week's TGM, the voting period has opened for the Autumn Elections!!!",
-                date: "Tuesday, 04/11/2021, 19:00",
-                body: "If you’ve somehow missed all of this, there are four roles going up for grabs, with 9 candidates fighting for their place on the committee.",
-
-                attending: false,
-            },
-        ])
+        const events = ref()
+        onMounted(() => {
+            axios.get("http://localhost:8000" + '/api/events/all')
+            .then((response) => {
+                console.log(response.data)
+                events.value = response.data.data
+            })
+        })
 
         const filteredEvents = computed(() => {
             return filterMode.value ? events.value.filter(e => e.attending) : events.value

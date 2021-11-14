@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> frontend
 .DS_Store
 backend/node_modules
 frontend/node_modules
@@ -27,7 +30,12 @@ pnpm-debug.log*
 *.sw?
 
 
+<<<<<<< HEAD
 =======
 
 frontend/simpl/.env
 >>>>>>> backend
+=======
+
+frontend/simpl/.env
+>>>>>>> frontend

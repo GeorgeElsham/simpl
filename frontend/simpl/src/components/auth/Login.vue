@@ -15,11 +15,12 @@
 </template>
 
 <script>
-
-import { setup, ref } from "vue"
+import { setup, ref, useRoute } from "vue"
+import state from "../../state.js"
+import axios from "axios"
 
 export default {
-    setup() {
+    setup(props) {
       const emailInput = ref(null)
       const passwordInput = ref(null)
 
@@ -28,8 +29,22 @@ export default {
         let password = passwordInput.value;
 
         if (email !== null && password !== null && email != "") {
-          //axios.post()
-          console.log(email, password)
+          const base = process.env.BACKEND_HOSTNAME;
+          axios.post("http://localhost:8000" + '/api/auth/sign-in', {
+            email: email,
+            password: password
+          },
+          {withCredentials: true})
+          .then((response) => {
+            if (response.data.success || response.data.loggedIn) {
+              state.loggedIn.value = true
+              window.vrouter.push("/")
+
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+          });
         }
       }
 
@@ -46,8 +61,7 @@ export default {
 <style scoped>
 #center {
   background-color: #283593;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

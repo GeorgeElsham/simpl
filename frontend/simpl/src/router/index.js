@@ -45,4 +45,7 @@ const router = createRouter({
   linkActiveClass: "router-class"
 })
 
+
+window.vrouter = router
+
 export default router
