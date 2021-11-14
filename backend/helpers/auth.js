@@ -6,7 +6,6 @@ exports.checkAuth = (req, res, next) => {
         '/',
         '/api/auth/sign-in',
         '/api/auth/sign-up',
-        '/api/auth/sign-out',
     ]
 
     const incomingCookie = req.cookies['X-Auth-Simpl'];
