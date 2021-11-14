@@ -31,12 +31,18 @@ const routes = [
     name: 'Societies',
     component: Societies
   },
+  {
+    path: '/societies/:id',
+    name: 'Society',
+    component: Society
+  },
 
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  linkActiveClass: "router-class"
 })
 
 export default router

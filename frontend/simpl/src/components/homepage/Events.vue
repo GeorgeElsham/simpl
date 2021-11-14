@@ -1,6 +1,6 @@
 <template>
     <div id="events">
-        <div id="title">
+        <div class="title">
             <p>Events</p>
             <div class="title-line"></div>
         </div>
