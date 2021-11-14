@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "cd ./backend && npm i && npm run start",
+    "heroku-postbuild": "cd ./backend && npm i",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
