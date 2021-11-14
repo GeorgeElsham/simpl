@@ -1,1 +1,1 @@
-web: cd ./backend && node server.js --sync --forcesync
+web: cd ./backend && node server.js --sync --forcesync --seed
