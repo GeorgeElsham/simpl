@@ -6,7 +6,14 @@ const morganMiddleware = require('./api/middlewares/morgan');
 const globalErrorHandler = require('./api/middlewares/globalErrorHandler');
 const indexRoutes = require('./api/routers');
 
-require('./database/connection');
+const { seed } = require('./database/seeders/seed');
+const { dbInit } = require('./database/connection');
+const services = require('./database/services');
+
+(async () => {
+    await dbInit();
+    seed(services);
+})()
 
 app.use(helmet());
 app.use(cors());

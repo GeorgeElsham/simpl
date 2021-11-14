@@ -1,4 +1,5 @@
 const express = require('express');
+const account = require('../../helpers/account');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -8,7 +9,6 @@ router.get('/', (req, res) => {
 router.post('/sign-in', async (req, res) => {
   const { username, password } = req.query;
   console.log(username, password);
-  const account = require('../../helpers/account');
 
   await account.signUp('George', 'ge1g21@soton.ac.uk', 'password123');
 
