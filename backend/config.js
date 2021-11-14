@@ -9,5 +9,5 @@ module.exports = {
     POSTGRES_PORT: process.env.POSTGRES_PORT,
 
     NODE_ENV: process.env.NODE_ENV || 'development',
-    PORT: process.env.PORT || 5000,
+    PORT: process.env.PORT || 8000,
 };
