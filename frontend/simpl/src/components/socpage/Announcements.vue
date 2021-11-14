@@ -25,16 +25,21 @@ export default {
   display: flex;
   flex-direction: column;
   align-content: center;
+  gap: 1rem;
 }
 .announcements {
   display: flex;
   flex-direction: horizontal;
-  align-content: space-around;
+  justify-content: space-around;
+  width: 100%;
 }
 .block {
+    padding: 0.9rem 7rem;
     display: flex;
     flex-direction: column;
     align-content: flex-start;
     gap: 1rem;
+  border-radius: 10px;
+  box-shadow: rgb(50 50 93 / 16%) 0px 3px 22px 5px;
 }
 </style>
