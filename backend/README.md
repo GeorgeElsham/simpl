@@ -36,7 +36,7 @@ TODO Description
 ❌ POST  /api/societies/:soc/leave - Leave that society
 ❌ GET   /api/societies/:soc/members - All members of soc
 ❌ GET   /api/societies/:soc/events - Fetch all events
-❌ POST  /api/societies/:soc/events/create - Create an event ( has to be owner )
+✔️ POST  /api/societies/:soc/events/create - Create an event ( has to be owner )
 ❌ POST  /api/societies/:soc/events/join - That user joins that event
 ✔️ GET   /api/societies/:soc/announcements - Fetch all announcements
 ✔️ POST  /api/societies/:soc/announcements/create - Creates an announcement ( has to be owner )
