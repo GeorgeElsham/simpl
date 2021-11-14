@@ -1,15 +1,18 @@
 <template>
+    <Menu />
     <router-view />
 </template>
 
 <script>
 
 import Home from "./components/homepage/Home.vue"
+import Menu from "./components/Menu.vue"
 
 export default {
     name: "App",
     components: {
-        Home
+        Home,
+        Menu
     },
 };
 </script>
@@ -27,7 +30,8 @@ html, * {
     text-align: center;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-color: rgba(0,0,0,0.05);
 }
 </style>
