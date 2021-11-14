@@ -48,9 +48,7 @@ router.post('/sign-up', async (req, res) => {
   else {
     res.status(200).json({
       success: true,
-      data: {
-        user: signedUp
-      }
+      data: signedUp,
     });
   }
 });

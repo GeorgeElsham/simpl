@@ -1,11 +1,10 @@
 const express = require('express');
-const { SocietyService, AnnouncementService, EventService } = require('../../database/services');
+const { SocietyService, AnnouncementService, EventService, UserService } = require('../../database/services');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
     console.log(req.user.id)
-    const user = await UserService.getById(req.user.id);
-    res.status(200).send(await user.getSocieties())
+    res.status(200).send(await req.user.getSocieties())
 });
 
 router.get('/:soc', async(req, res) => {
