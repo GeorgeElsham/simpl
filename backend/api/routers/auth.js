@@ -14,13 +14,21 @@ router.get('/protected', (req, res) => {
 router.post('/sign-in', async (req, res) => {
   const { email, password } = req.query;
 
-  // Cookie logic
-  const cookieValue = v4();
-  cookieCache.set(cookieValue, Date.now() + 1209600000)
-  res.cookie('X-Auth-Simpl', cookieValue, { maxAge: 1209600000 }); // 14 Days
+  const user = await account.signIn(email, password);
 
-  const signedIn = await account.signIn(email, password);
-  res.send(`Signed in: ${signedIn}`);
+  if (user) {
+    // Cookie logic
+    cookieCache.set(user.id, Date.now() + 1209600000)
+    res.cookie('X-Auth-Simpl', v4() + ':' + user.id, { maxAge: 1209600000 }); // 14 Days
+    res.status(200).json({
+      signedIn: true,
+    });
+  }
+  else {
+    res.status(200).json({
+      signedIn: false,
+    });
+  }
 });
 
 router.post('/sign-up', async (req, res) => {

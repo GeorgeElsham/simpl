@@ -7,10 +7,12 @@ async function signIn(email, password) {
 
   if (user) {
     const isPasswordCorrect = await _checkPassword(password, user.password_hash);
-
-    // TODO: set cookies
-
-    return isPasswordCorrect;
+    if (isPasswordCorrect) {
+      return user;
+    }
+    else {
+      return false;
+    }
   } else {
     return false;
   }

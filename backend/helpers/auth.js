@@ -10,8 +10,10 @@ exports.checkAuth = (req, res, next) => {
 
     const incomingCookie = req.cookies['X-Auth-Simpl'];
 
+    const storedCookie = cookieCache.get(incomingCookie)
+
     // If we have cookie stored let them through
-    if (nonAuthRoutes.includes(req.path) || cookieCache.get(incomingCookie)) {
+    if ((nonAuthRoutes.includes(req.path) || storedCookie) && storedCookie > Date.now()) {
         next();
     }
     else {
