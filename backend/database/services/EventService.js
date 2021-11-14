@@ -33,6 +33,7 @@ exports.create = (data) => {
         description: data.description,
         location: data.location,
         user: data.user,
+        start_date: data.start_date,
     });
 }
 
