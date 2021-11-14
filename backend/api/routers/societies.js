@@ -60,4 +60,19 @@ router.post('/:soc/events/create', async (req, res) => {
         data: event,
     });
 })
+
+router.post('/:soc/events/:event/join', async (req, res) => {
+
+    const user = req.user
+
+    const event = await EventService.get([req.params.event]);
+
+    event.addUser(user);
+
+    res.status(200).json({
+        status: 'success',
+        data: createdAnnouncement,
+    });
+})
+
 module.exports = router;
