@@ -12,8 +12,6 @@ exports.checkAuth = (req, res, next) => {
 
     const storedCookie = cookieCache.get(incomingCookie)
 
-    console.log(storedCookie, incomingCookie);
-
     // If we have cookie stored let them through
     if (nonAuthRoutes.includes(req.path) || (storedCookie && storedCookie > Date.now())) {
         if (storedCookie) {
