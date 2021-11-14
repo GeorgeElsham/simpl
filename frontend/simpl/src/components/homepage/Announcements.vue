@@ -16,6 +16,7 @@
     /* margin-top: 50px;
      */
      align-self: center;
+     max-width: 100%;
 }
 
 #carousel {

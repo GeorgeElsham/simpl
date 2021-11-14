@@ -27,9 +27,11 @@ export default {
 <style scoped>
 .container-hor {
   margin: 2.5% 0%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-evenly; */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 a.link {

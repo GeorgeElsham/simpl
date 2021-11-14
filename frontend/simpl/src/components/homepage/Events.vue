@@ -1,6 +1,6 @@
 <template>
     <div id="events">
-        <div id="title">
+        <div class="title">
             <p>Events</p>
             <div class="title-line"></div>
         </div>
@@ -24,6 +24,10 @@
 </template>
 
 <style scoped>
+
+#events {
+    margin-top: 30px;
+}
 
 #list {
     display: flex;
