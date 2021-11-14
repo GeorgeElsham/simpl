@@ -35,3 +35,7 @@ exports.create = (data) => {
         user: data.user,
     });
 }
+
+exports.getAll = () => {
+    return Events.findAll();
+}
