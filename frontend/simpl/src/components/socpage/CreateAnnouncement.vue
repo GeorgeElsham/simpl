@@ -68,7 +68,7 @@ export default {
         const titleInput = ref()
         const descriptionInput = ref()
 
-        const visible = ref(true)
+        const visible = ref(false)
 
         watch(() => props.toggle, (n, o) => {
             visible.value = !visible.value 

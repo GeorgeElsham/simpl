@@ -76,7 +76,7 @@ export default {
         const descriptionInput = ref()
         const dateInput = ref()
 
-        const visible = ref(true)
+        const visible = ref(false)
 
         watch(() => props.toggle, (n, o) => {
             visible.value = !visible.value 
