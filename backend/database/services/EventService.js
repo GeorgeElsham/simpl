@@ -18,7 +18,7 @@ exports.get = (uuids) => {
 }
 
 exports.getBySoc = (uuid) => {
-    return Announcements.findAll({
+    return Events.findAll({
         where: {
             society_id: uuid,
         }
@@ -34,4 +34,8 @@ exports.create = (data) => {
         location: data.location,
         user: data.user,
     });
+}
+
+exports.getAll = () => {
+    return Events.findAll();
 }

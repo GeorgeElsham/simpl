@@ -40,3 +40,5 @@ TODO Description
 ✔️ POST  /api/societies/:soc/events/:event/join - That user joins that event
 ✔️ GET   /api/societies/:soc/announcements - Fetch all announcements
 ✔️ POST  /api/societies/:soc/announcements/create - Creates an announcement ( has to be owner )
+
+✔️ GET   /api/events/all
