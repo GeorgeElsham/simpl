@@ -1,5 +1,5 @@
 import { ref } from "vue"
 
 export default {
-    loggedIn: ref(true)
+    loggedIn: ref(false)
 }
