@@ -22,7 +22,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.UUID,
             allowNull: false,
         },
-    }, { 
+        start_date: {
+            type: DataTypes.DATE,
+        },
+    }, {
         freezeTableName: true,
         underscored: true,
     });

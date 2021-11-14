@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js --debug",
-    "dev:sync": "node server.js --debug --sync --forcesync"
+    "dev:sync": "node server.js --debug --sync --forcesync --seed"
   },
   "repository": {
     "type": "git",

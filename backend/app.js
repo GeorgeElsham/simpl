@@ -15,7 +15,9 @@ const { checkAuth } = require('./helpers/auth');
 
 (async () => {
     await dbInit();
-    seed(services);
+    if (process.argv.includes('--seed')) {
+        seed(services);
+    }
 })()
 
 app.use(helmet());
@@ -29,9 +31,7 @@ app.use(checkAuth);
 app.use('/api', indexRoutes);
 
 app.get('/', (req, res) => {
-    res.status(200).json({
-        status: 'success',
-    });
+    res.send('Back home!')
 })
 
 // handling all (get,post,update,delete.....) unhandled routes

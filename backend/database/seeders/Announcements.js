@@ -1,13 +1,13 @@
 const faker = require('faker');
 const { v4 } = require('uuid');
 
-const AnnouncementSeed = (AnnouncementService) => {
-    AnnouncementService.create({
+const AnnouncementSeed = (AnnouncementService, user, society, event) => {
+    return AnnouncementService.create({
         id: v4(),
-        society_id: v4(),
-        event_id: v4(),
+        society_id: society.id,
+        event_id: event.id,
         description: faker.commerce.productDescription(),
-        user: v4(),
+        user: user.id,
      });
 }
 

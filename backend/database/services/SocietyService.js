@@ -32,3 +32,12 @@ exports.create = (data) => {
         color: Number(data.color),
     });
 }
+
+exports.addUser = (users, society) => {
+    //assume user(s) and society exists
+    if (users.length === 1) {
+        society.addUser(users[0])
+    } else {
+        society.addUsers(users)
+    }
+}
