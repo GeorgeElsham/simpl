@@ -9,6 +9,13 @@ router.get('/', async (req, res) => {
     });
 });
 
+router.get('/all', async (req, res) => {
+    res.status(200).json({
+        success: true,
+        data: await SocietyService.getAll()
+    });
+});
+
 router.get('/:soc', async(req, res) => {
     const soc_id = req.params.soc;
     const soc = await SocietyService.getById(soc_id);
@@ -104,11 +111,11 @@ router.post('/:soc/events/:event/join', async (req, res) => {
 
     const event = await EventService.get([req.params.event]);
 
-    event.addUser(user);
+    const joinedEvent = await event[0].addUser(user);
 
     res.status(200).json({
         status: 'success',
-        data: createdAnnouncement,
+        data: joinedEvent,
     });
 })
 
