@@ -1,9 +1,21 @@
 const express = require('express');
 const account = require('../../helpers/account');
+const { cookieCache } = require('../../helpers/auth');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/setcookie', (req, res) => {
+  // Cookie logic
+  const cookieValue = 'testcookie' + Math.random();
+  cookieCache.set(cookieValue, Date.now() + 1209600000)
+  res.cookie('X-Auth', cookieValue, { maxAge: 1209600000 }); // 14 Days
   res.sendStatus(200);
+});
+
+router.get('/protected', (req, res) => {
+  // Cookie logic
+  res.status(200).json({
+    working: true,
+  });
 });
 
 router.post('/sign-in', async (req, res) => {

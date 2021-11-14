@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
+
 const morganMiddleware = require('./api/middlewares/morgan');
 const globalErrorHandler = require('./api/middlewares/globalErrorHandler');
 const indexRoutes = require('./api/routers');
@@ -9,6 +11,7 @@ const indexRoutes = require('./api/routers');
 const { seed } = require('./database/seeders/seed');
 const { dbInit } = require('./database/connection');
 const services = require('./database/services');
+const { checkAuth } = require('./helpers/auth');
 
 (async () => {
     await dbInit();
@@ -19,12 +22,8 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(morganMiddleware)
-
-// testing middleware
-app.use((req, res, next) => {
-	// Auth stuff?
-	next();
-});
+app.use(cookieParser());
+app.use(checkAuth);
 
 // routes
 app.use('/api', indexRoutes);
