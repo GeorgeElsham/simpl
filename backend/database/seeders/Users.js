@@ -1,7 +1,6 @@
-const { UserService } = require('../services');
 const faker = require('faker');
 
-const UserSeed = () => {
+const UserSeed = (UserService) => {
     return UserService.create({
         name: faker.name.findName(),
         email: faker.internet.email(),

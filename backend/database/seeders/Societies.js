@@ -1,8 +1,7 @@
-const { SocietyService } = require('../services');
 const faker = require('faker');
 const { society_categories } = require('../models/enums');
 
-const SocietySeed = () => {
+const SocietySeed = (SocietyService) => {
     return SocietyService.create({
         name: faker.company.companyName(),
         description: faker.commerce.productDescription(),

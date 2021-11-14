@@ -5,21 +5,19 @@ const { EventSeed } = require('./Events');
 const { SocietySeed } = require('./Societies');
 const { UserSeed } = require('./Users');
 
-
-
-exports.seed = async () => {
+exports.seed = async ({ AnnouncementService, EventService, SocietyService, UserService }) => {
     logger.info('Seeding database...');
 
     // Generates 100 users
     const users = [];
     for (let i = 0; i < 100; i++) {
-        users.push(await UserSeed());
+        users.push(await UserSeed(UserService));
     }
 
     // Generates 10 Societies
     const societies = [];
     for (let i = 0; i < 10; i++) {
-        societies.push(await SocietySeed());
+        societies.push(await SocietySeed(SocietyService));
     }
 
     // Adds all the users to a random number of societies
@@ -34,11 +32,11 @@ exports.seed = async () => {
     }
 
     for (let i = 0; i < 10; i++) {
-        societies.push(await EventSeed());
+        societies.push(await EventSeed(EventService));
     }
 
     for (let i = 0; i < 10; i++) {
-        societies.push(await AnnouncementSeed());
+        societies.push(await AnnouncementSeed(AnnouncementService));
     }
 
 

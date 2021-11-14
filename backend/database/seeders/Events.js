@@ -1,8 +1,7 @@
 const { v4 } = require('uuid');
-const { EventService } = require('../services');
 const faker = require('faker');
 
-const EventSeed = () => {
+const EventSeed = (EventService) => {
     EventService.create({
         id: v4(),
         society_id: v4(),
