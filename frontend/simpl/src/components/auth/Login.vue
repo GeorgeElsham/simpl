@@ -16,10 +16,11 @@
 
 <script>
 import { setup, ref } from "vue"
-import { state } from "../../state.js"
+import state from "../../state.js"
+import axios from "axios"
 
 export default {
-    setup() {
+    setup(props, {root}) {
       const emailInput = ref(null)
       const passwordInput = ref(null)
 
@@ -29,13 +30,14 @@ export default {
 
         if (email !== null && password !== null && email != "") {
           const base = process.env.BACKEND_HOSTNAME;
-          axios.post(base + '/api/auth/sign-in', {
+          axios.post("http://localhost:8000" + '/api/auth/sign-in', {
             email: email,
             password: password
           })
           .then((response) => {
-            if (response.data.signedIn) {
+            if (response.data.success || response.data.loggedIn) {
               state.loggedIn = true
+              root.$router.go("/")
             }
           })
           .catch((e) => {
