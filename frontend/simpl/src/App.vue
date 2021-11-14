@@ -1,6 +1,8 @@
 <template>
+<div class="root">
     <Menu />
-    <router-view style="width: 70%" />
+    <router-view style="flex:1" />
+</div>
 </template>
 
 <script>
@@ -52,5 +54,11 @@ html, * {
     height: 2px;
     width: 300px;
     background-color: black;
+}
+.root {
+    width: 70vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 </style>

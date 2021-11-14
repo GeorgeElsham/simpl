@@ -12,12 +12,15 @@
             <div class="menu-button">Account</div>
             <div class="menu-button">Create society</div>
         </div>
+        <hr id="break">
     </div>
+    
 </template>
 
 <style>
 
 #menu {
+    padding-top: 2rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
@@ -49,6 +52,11 @@
     color: white;
     font-weight: bold;
     border-radius: 10px;
+}
+
+#break {
+    margin-top: 1rem;
+    grid-area: 2 / 1 / 3 / 4;
 }
 
 </style>
