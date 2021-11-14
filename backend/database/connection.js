@@ -35,7 +35,6 @@ Societies.belongsToMany(Users, { through: UserSociety });
 
 
 const dbInit = async () => {
-    // if (NODE_ENV == 'development') {
     const force = process.argv.includes('--forcesync');
     const sync = process.argv.includes('--sync');
     if (sync) {
@@ -47,7 +46,6 @@ const dbInit = async () => {
             logger.alert('All models synced');
         }
     }
-    // }
 }
 
 module.exports = { Announcements, Events, Societies, Users, dbInit };
