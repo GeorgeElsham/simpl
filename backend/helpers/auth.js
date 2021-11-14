@@ -12,13 +12,17 @@ exports.checkAuth = (req, res, next) => {
 
     const storedCookie = cookieCache.get(incomingCookie)
 
+    console.log(storedCookie, incomingCookie);
+
     // If we have cookie stored let them through
-    if ((nonAuthRoutes.includes(req.path) || storedCookie) && storedCookie > Date.now()) {
+    if (nonAuthRoutes.includes(req.path) || (storedCookie && storedCookie > Date.now())) {
+        if (storedCookie) {
+            req.user = incomingCookie.split(':')[1]
+        }
         next();
     }
     else {
         res.redirect('/');
     }
 }
-
 exports.cookieCache = cookieCache;

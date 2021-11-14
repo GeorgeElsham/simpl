@@ -18,8 +18,9 @@ router.post('/sign-in', async (req, res) => {
 
   if (user) {
     // Cookie logic
-    cookieCache.set(user.id, Date.now() + 1209600000)
-    res.cookie('X-Auth-Simpl', v4() + ':' + user.id, { maxAge: 1209600000 }); // 14 Days
+    const cookie = v4() + ':' + user.id;
+    cookieCache.set(cookie, Date.now() + 1209600000)
+    res.cookie('X-Auth-Simpl', cookie, { maxAge: 1209600000 }); // 14 Days
     res.status(200).json({
       signedIn: true,
     });

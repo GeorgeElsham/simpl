@@ -5,7 +5,8 @@ router.get('/', (req, res) => {
     res.sendStatus(200);
 });
 
-router.post('/test', async (req, res) => {
+router.get('/test', async (req, res) => {
+    console.log(req.user);
     res.send('sadfasdfasdf');
 });
 
