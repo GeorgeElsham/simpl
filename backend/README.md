@@ -30,9 +30,9 @@ TODO Description
 ✔️ POST  /api/auth/sign-out - Signs out
 ❌ PATCH /api/auth/edit - Edit user data
 
-❌ GET   /api/societies - Get all societies for a specific user
-❌ GET   /api/societies/:soc/ - Info about soc ( only if that user is in it )
-❌ POST  /api/societies/:soc/join - Join that society
+✔️ GET   /api/societies - Get all societies for a specific user
+✔️ GET   /api/societies/:soc/ - Info about soc ( only if that user is in it )
+✔️ POST  /api/societies/:soc/join - Join that society
 ❌ POST  /api/societies/:soc/leave - Leave that society
 ❌ GET   /api/societies/:soc/members - All members of soc
 ❌ GET   /api/societies/:soc/events - Fetch all events
