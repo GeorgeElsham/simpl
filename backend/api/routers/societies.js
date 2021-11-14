@@ -20,16 +20,14 @@ router.get('/:soc', async(req, res) => {
 })
 
 router.post('/:soc/join', async(req, res) => {
-    const soc_id = req.params.soc;
-    const soc = await SocietyService.getById(soc_id);
-    const user = await UserService.getById(req.user.id)
-    if (soc == undefined) {
+    const socs = await SocietyService.getById(req.params.soc);
+
+    if (socs == undefined) {
         res.status(404)
     } else {
-        console.log(soc[0])
-        console.log(user)
-        const userJoinedResponse = await soc[0].addUser(user)
-        const userSetRoleResponse = await s[0].update({role: "member"})
+        const society = socs[0]
+        const userSoc = await society.addUser(req.user)
+        const userSetRoleResponse = await userSoc[0].update({ role: "member" })
         res.status(200).json(userSetRoleResponse)
     }
 })
