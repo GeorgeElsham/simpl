@@ -12,7 +12,7 @@ router.get('/protected', (req, res) => {
 });
 
 router.post('/sign-in', async (req, res) => {
-  const { email, password } = req.query;
+  const { email, password } = req.body;
 
   const user = await account.signIn(email, password);
 
@@ -22,30 +22,45 @@ router.post('/sign-in', async (req, res) => {
     cookieCache.set(cookie, Date.now() + 1209600000)
     res.cookie('X-Auth-Simpl', cookie, { maxAge: 1209600000 }); // 14 Days
     res.status(200).json({
-      signedIn: true,
+      success: true,
+      data: user
     });
   }
   else {
     res.status(200).json({
-      signedIn: false,
+      success: false,
+      data: user
     });
   }
 });
 
 router.post('/sign-up', async (req, res) => {
-  const { name, email, password } = req.query;
+  const { name, email, password } = req.body;
 
   const signedUp = await account.signUp(name, email, password);
-  res.send(`Signed up: ${signedUp}`);
+
+  if (!signedUp) {
+    res.status(500).json({
+      success: false,
+      data: signedUp
+    });
+  }
+  else {
+    res.status(200).json({
+      success: true,
+      data: signedUp,
+    });
+  }
 });
 
 router.post('/sign-out', async (req, res) => {
-  if (req.user) {
-    cookieCache.delete(req.user.id);
-    res.send(`Signed out user with ID: '${req.user.id}'`);
-  } else {
-    res.send('Failed to sign out - no user ID given');
-  }
+  cookieCache.delete(req.incomingCookie);
+  res.status(200).json({
+    success: true,
+    data: {
+      user: req.user
+    }
+  });
 });
 
 router.patch('/edit', async (req, res) => {

@@ -33,7 +33,7 @@ async function signUp(name, email, password) {
     verified: Math.random() > 0.1,
   });
 
-  return true;
+  return user;
 }
 
 function editUser(usedId, data) {

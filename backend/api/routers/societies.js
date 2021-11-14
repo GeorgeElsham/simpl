@@ -1,24 +1,28 @@
 const express = require('express');
-const { SocietyService, AnnouncementService, EventService } = require('../../database/services');
+const { SocietyService, AnnouncementService, EventService, UserService } = require('../../database/services');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    console.log(req.user)
-    const user = await UserService.getById(req.user);
-    res.status(200).send(await user.getSocieties())
+    res.status(200).json({
+        success: true,
+        data: await req.user.getSocieties()
+    });
 });
 
 router.get('/:soc', async(req, res) => {
     const soc_id = req.params.soc;
     const soc = await SocietyService.getById(soc_id);
     console.log(soc)
-    res.status(200).send(soc)
+    res.status(200).json({
+        success: true,
+        data: soc
+    });
 })
 
 router.post('/:soc/join', async(req, res) => {
     const soc_id = req.params.soc;
     const soc = await SocietyService.getById(soc_id);
-    const user = await UserService.getById(req.user)
+    const user = await UserService.getById(req.user.id)
     if (soc == undefined) {
         res.status(404)
     } else {
@@ -33,7 +37,7 @@ router.post('/:soc/join', async(req, res) => {
 router.post('/:soc/leave', async(req, res) => {
     const soc_id = req.params.soc;
     const soc = await SocietyService.getById(soc_id);
-    const user = await UserService.getById(req.user)
+    const user = await UserService.getById(req.user.id)
     if (soc == undefined) {
         res.status(404)
     } else {
@@ -45,7 +49,7 @@ router.post('/:soc/leave', async(req, res) => {
 })
 
 router.get('/test', async (req, res) => {
-    console.log(req.user);
+    console.log(req.user.id);
     SocietyService.getAll();
     res.sendStatus(200);
 });
