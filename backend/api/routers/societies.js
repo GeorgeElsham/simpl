@@ -3,15 +3,20 @@ const { SocietyService, AnnouncementService, EventService, UserService } = requi
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    console.log(req.user.id)
-    res.status(200).send(await req.user.getSocieties())
+    res.status(200).json({
+        success: true,
+        data: await req.user.getSocieties()
+    });
 });
 
 router.get('/:soc', async(req, res) => {
     const soc_id = req.params.soc;
     const soc = await SocietyService.getById(soc_id);
     console.log(soc)
-    res.status(200).send(soc)
+    res.status(200).json({
+        success: true,
+        data: soc
+    });
 })
 
 router.post('/:soc/join', async(req, res) => {
