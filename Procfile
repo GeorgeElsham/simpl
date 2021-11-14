@@ -1,1 +1,1 @@
-web: npm start --prefix backend
+web: cd ./backend && node server.js --sync --forcesync --seed
