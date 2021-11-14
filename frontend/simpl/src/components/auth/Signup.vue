@@ -54,7 +54,7 @@ export default {
 <style scoped>
 #center {
   background-color: #283593;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
