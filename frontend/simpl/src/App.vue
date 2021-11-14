@@ -1,14 +1,18 @@
 <template>
 <div class="root">
-    <Menu />
+    <Menu v-if="loggedIn" />
     <router-view style="flex:1" />
 </div>
 </template>
 
 <script>
 
+import { setup } from "vue"
+
 import Home from "./components/homepage/Home.vue"
 import Menu from "./components/Menu.vue"
+
+import state from "./state.js"
 
 export default {
     name: "App",
@@ -16,6 +20,14 @@ export default {
         Home,
         Menu
     },
+
+    setup() {
+        return {
+            loggedIn: state.loggedIn
+        }
+    }
+
+
 };
 </script>
 
