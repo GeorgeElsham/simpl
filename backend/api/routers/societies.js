@@ -1,9 +1,11 @@
 const express = require('express');
-const { SocietyService } = require('../../database/services');
+const { SocietyService, UserService } = require('../../database/services');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.sendStatus(200);
+router.get('/', async (req, res) => {
+    console.log(req.user)
+    const user = await UserService.getById(req.user);
+    res.status(200).send(user.Societies)
 });
 
 router.get('/test', async (req, res) => {
