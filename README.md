@@ -19,15 +19,41 @@ SiMPL is a society management platform. A common issue for university societies 
   * All societies
   * Create a society
 
+## Stack
+
+### Front-end
+
+* [vue][10] for UI
+* [axios][11] for HTTP requests
+
+### Back-end
+
+* [express][20] for web server
+* [pg][21] for Node.js PostgreSQL client
+* [bcrypt][22] for hashing passwords
+* [sequelize][23] for SQL queries
+* [faker][24] for generating fake test data
+* [cookie-parser][25] for parsing cookie headers
+
 ## Contributors
 
-* Euan Caskie: [@Ortovoxx][2]
-* George Elsham: [@GeorgeElsham][1]
-* German Nikolishin: [@SkymanOne][3]
-* Matej Porubovic: [@mporubovic][4]
+* Euan Caskie: [@Ortovoxx][30]
+* George Elsham: [@GeorgeElsham][31]
+* German Nikolishin: [@SkymanOne][32]
+* Matej Porubovic: [@mporubovic][33]
 
 
-[1]: https://github.com/GeorgeElsham
-[2]: https://github.com/Ortovoxx
-[3]: https://github.com/SkymanOne
-[4]: https://github.com/mporubovic
+[10]: https://www.npmjs.com/package/vue
+[11]: https://www.npmjs.com/package/axios
+
+[20]: https://www.npmjs.com/package/express
+[21]: https://www.npmjs.com/package/pg
+[22]: https://www.npmjs.com/package/bcrypt
+[23]: https://www.npmjs.com/package/sequelize
+[24]: https://www.npmjs.com/package/faker
+[25]: https://www.npmjs.com/package/cookie-parser
+
+[30]: https://github.com/Ortovoxx
+[31]: https://github.com/GeorgeElsham
+[32]: https://github.com/SkymanOne
+[33]: https://github.com/mporubovic
